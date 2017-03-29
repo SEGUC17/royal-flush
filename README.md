@@ -5,6 +5,7 @@ Software Engineering Project
 Please follow the following guidlines. 
 ---------------------------------------------------------------------------------------------------------
 # Each person MUST clone what is provided on the master branch to their PCs. Then create a branch with their name in lowercase separated by '_' (ex: dina_makled) and ONLY push changes created on their branch.
+* To push on your branch: git push origin 'your-branch-name' 
 
 * All routes are to be added in the 'routes.js' file.
 * All controllers are to be added in the 'controllers' folder and must be named using 'lowerCamelCase'.
