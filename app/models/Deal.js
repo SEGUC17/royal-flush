@@ -22,7 +22,8 @@ var dealSchema = mongoose.Schema({
     required:true
   },
   terms:{
-    type:String
+    type:String,
+    default:"No terms apply."
   },
   picture_path:{
     type:String,
@@ -30,6 +31,7 @@ var dealSchema = mongoose.Schema({
   },
   expired:{
     type:Boolean,
+    default:false,
     required:true
   },
   client_id:{
