@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 var client_profile_schema = mongoose.Schema({
 
-  payment_info:{type:String},
+  clientInfo:String,
+  paymentInfo:String,
 
 },{
   versionKey: false
