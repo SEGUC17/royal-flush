@@ -7,19 +7,22 @@ var dealSchema = mongoose.Schema({
   },
   price:{
     type:Number,
-    required:true
+    required:true,
+    default:0.0
   },
   description:{
     type:String,
     required:true
   },
   start_date:{
-    type:{type: Date, default: Date.now},
-    required:true
+    type:Date,
+    required:true,
+    default: Date.now
   },
   end_date:{
-    type:{type: Date, default: Date.now},
-    required:true
+    type:Date,
+    required:true,
+     default: Date.now
   },
   terms:{
     type:String,
@@ -31,8 +34,7 @@ var dealSchema = mongoose.Schema({
   },
   expired:{
     type:Boolean,
-    default:false,
-    required:true
+    default:false
   },
   client_id:{
     type:String,
@@ -40,9 +42,8 @@ var dealSchema = mongoose.Schema({
   },
   event_id:{
     type:String,
-    required:true
+    default:"0"
   }
-
 })
 
 var Deal = mongoose.model("deal", dealSchema);
