@@ -2,7 +2,7 @@ let Deal = require('../models/Deal');
 
 let dealController = {
 
-// This method views all deals
+// Views all deals
   getAllDeals:function(req, res){
     Deal.find(function(err, deals){
       if(err){
