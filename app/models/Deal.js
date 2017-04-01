@@ -28,7 +28,7 @@ var dealSchema = mongoose.Schema({
     type:String,
     default:"No terms apply."
   },
-  picture_path:{
+  image_path:{
     type:String,
     required:true
   },

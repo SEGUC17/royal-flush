@@ -39,16 +39,17 @@ let dealController = {
 // Add a new Deal using client_id
   addNewDeal:function(req, res){
     // req.body.client_id = req.session.id; //Session value
-    req.body.title = "Title"; // Will be provided through frontend
+    req.body.title = "Title 1"; // Will be provided through frontend
     req.body.price = 0.9494; // Will be provided through frontend
-    req.body.description = "Nrwww description"; // Will be provided through frontend
+    req.body.description = "Description 1"; // Will be provided through frontend
     req.body.start_date = new Date("2017-05-18T00:00:00Z"); // Will be provided through frontend
     req.body.end_date = new Date("2017-06-18T00:00:00Z"); // Will be provided through frontend
-    req.body.picture_path = "picture path"; // Will be provided through frontend
+    req.body.image_path = "Path 1"; // Should be replaced by bottom line
+    // req.body.image_path = req.file.path; // Will be provided through frontend
     req.body.expired = true; // Will be provided through frontend
-    req.body.event_id = "2"; // Will be provided through frontend
+    req.body.event_id = "3"; // Will be provided through frontend
     ///
-    req.body.client_id = "1"; // Session value
+    req.body.client_id = "2"; // Session value
 
     let deal = new Deal(req.body);
     deal.save(function(err, deal){
@@ -91,7 +92,7 @@ let dealController = {
     // req.body.start_date; // Will be provided through frontend
     // req.body.end_date; // Will be provided through frontend
     // req.body.terms; // Will be provided through frontend
-    // req.body.picture_path; // Will be provided through frontend
+    // req.body.image_path; // Will be provided through frontend
     // req.body.expired;// Will be provided through frontend
     // req.body.event_id; // Will be provided through frontend
     Deal.update({_id:req.params.deal_id}, req.body, function(err, deal){
