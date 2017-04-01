@@ -9,21 +9,24 @@
   </head>
   <body>
 
+    <form id="saveClientEventForm" action="/saveClientEvent" method="post" >
 
-    <form id="saveClientProfileForm" action="/saveClientProfile" method="post" >
-
-            <label>Description</label>
-            <input type="text" name="description" placeholder="description">
+            <label>Event name</label>
+            <input type="text" name="eventName" placeholder="event name">
             <br>
-            <label>Client info</label>
-            <input type="text" name="clientInfo" placeholder="client info">
+            <label>Starting date</label>
+            <input type="date" name="startingDate" placeholder="starting date">
             <br>
-            <label>Payment info</label>
-            <input type="text" name="paymentInfo" placeholder="payment info">
+            <label>Ending date</label>
+            <input type="date" name="endingDate" placeholder="ending date">
+            <br>
+            <label>Price</label>
+            <input type="text" name="price" placeholder="price">
             <br>
             <input type="submit" name="submit" value="button">
 
     </form>
+
 
   </body>
 </html>

@@ -6,7 +6,7 @@ var multer = require('multer');
 // var upload = multer({dest: './public/uploads/ClientPicturesUploads/'});
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var DB_URI = "mongodb://localhost:27017/mini";
+var DB_URI = "mongodb://localhost:27017/db";
 
 /////
 var client_profile_controller = require('./app/controllers/clientProfileController');
@@ -26,8 +26,8 @@ app.post('/uploadClientVideo',  multer({dest: './public/uploads/ClientVideossUpl
 // configure app
 
 
-app.use(bodyParser.json());
-
+// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(__dirname + '/public'));
 
 mongoose.connect(DB_URI);

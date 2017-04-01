@@ -1,8 +1,8 @@
 var mongoose= require('mongoose');
 
-var event_schema= mongoose.Schema({
+var client_event_schema= mongoose.Schema({
 
-
+    clientName:String,
     eventName:{type:String, required:true},
     startingDate:{type:Date, required:true},
     endingDate:{type:Date, required:true},
@@ -14,8 +14,5 @@ var event_schema= mongoose.Schema({
 
     });
 
-
-})
-
-var event = mongoose.model("event", event_schema);
+var event = mongoose.model("clientEvent", client_event_schema);
 module.exports = event;
