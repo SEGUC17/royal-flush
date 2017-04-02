@@ -14,10 +14,28 @@
     <p>client info: <%= clientProfile.clientInfo %></p>
     <p>payment info: <%= clientProfile.paymentInfo %></p><br><br>
 
+    <form class="" action="/createClientEvent" method="post">
+
+        <input type="submit" name="submit" value="Create Event">
+
+    </form>
+    <form class="" action="/viewClientEvents" method="post">
+
+        <input type="submit" name="submit" value="View Events">
+
+    </form>
+
+    <form class="" action="/uploadClientFile" method="post">
+
+        <input type="submit" name="submit" value="Add picture or video">
+
+    </form>
+    <br>
+
     <% for(var i=0; i<clientPicturesResult.length; i++){%>
     <img src="./uploads/ClientPicturesUploads/<%=clientPicturesResult[i].pictureName%>" alt="Client picture" style="width:304px;height:228px;">
   <% } %>
-
+<br>
 <% for(var i=0; i<clientVideosResult.length; i++){%>
     <video width="320" height="240" controls>
         <source src="./uploads/ClientVideosUploads/<%=clientVideosResult[i].videoName%>" type="video/mp4">

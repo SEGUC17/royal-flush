@@ -14,8 +14,8 @@ let client_event_controller = { // the name of the client should be saved in a s
       var eDate = new Date(req.body.endingDate.toString());
 
       //console.log(req.body);
-      var clientName = req.session.clientname;          ////////////session
-      var eventName =  req.body.event;
+      var clientName = "Amr";          ////////////session
+      var eventName =  req.body.eventName;
       var startingDate = (new Date(req.body.startingDate)).toDateString();
       var endingDate = (new Date(req.body.endingDate)).toDateString();
       var price = req.body.price;
@@ -43,13 +43,37 @@ let client_event_controller = { // the name of the client should be saved in a s
       client_event.save(function(err, client_event){
 
               if(err){
-                console.log(err.message);
+                console.log(err);
               }else{
+                res.redirect('/viewClientProfile');
                 console.log("client event saved!");
               }
 
       });
 
+
+  },
+
+  viewClientEvents:function(req, res){
+
+    /////clientname is retrieved from session
+
+  //  var clientname = req.session.clientname;
+      var clientname = "Amr";
+
+      var getEvents = clientEvent.find({'clientName':clientname}, 'clientName eventName startingDate endingDate price', function(err, events){
+
+          if(err){
+
+            console.log(err.message);
+
+          }else{
+              console.log(events);
+              res.render('viewClientEvents', {events});
+
+          }
+
+      });
 
   }
 

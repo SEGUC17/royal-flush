@@ -76,6 +76,7 @@ let client_profile_controller = { // the name of the client should be saved in a
             console.log(err.message);
           }else{
             console.log("Picture is saved successfully!");
+            res.redirect('/viewClientProfile');
           }
           });
         }
@@ -112,6 +113,7 @@ let client_profile_controller = { // the name of the client should be saved in a
             console.log(err.message);
           }else{
             console.log("Video is saved successfully!");
+            res.redirect('/viewClientProfile');
           }
         });
         }
@@ -154,12 +156,6 @@ let client_profile_controller = { // the name of the client should be saved in a
                          console.log(err.message);
                          return;
 
-                      }else if(clientPictures == null){
-
-                        console.log("There is no pictures available!");
-                        getClientVideos();
-                        return;
-
                       }else{
 
                       //  console.log(clientPictures);
@@ -168,8 +164,6 @@ let client_profile_controller = { // the name of the client should be saved in a
                       // res.render('viewClientProfile', {clientProfile, clientPicturesResult});
 
                       }
-
-
 
                   });
 
@@ -187,22 +181,15 @@ let client_profile_controller = { // the name of the client should be saved in a
               }else{
 
                clientVideosResult = clientVideos;
-              console.log(clientVideosResult);
+            //  console.log(clientVideosResult);
             //  console.log(clientPicturesResult);
              res.render('viewClientProfile', {clientProfile, clientPicturesResult, clientVideosResult});
               }
 
-
-
           });
         }
 
-   //console.log(clientVideosResult);
-
-
-
-
-            }
+        }
 
 
         });
