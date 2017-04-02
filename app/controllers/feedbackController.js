@@ -14,8 +14,7 @@ let feedbackController = {
   },
   // Get client specific feedbacks using client_id
   getAllClientFeedbacks:function(req, res){
-    var client_id = 1; // This should change with session value
-    Feedback.find({client_id:client_id}, function(err, feedbacks){
+    Feedback.find({client_id:req.params.client_id}, function(err, feedbacks){
       if(err){
         res.send(err.message);
       }
@@ -38,8 +37,8 @@ let feedbackController = {
 // Add a new Deal using feedback_id
   addNewFeedback:function(req, res){
     // var user_id = 1; // This should change with session value
-    req.body.description = "This is a description";
     req.body.client_id = req.params.client_id;
+    req.body.body = "This is a body";
     req.body.user_id = "1"; // Session value
 
     let feedback = new Feedback(req.body);
@@ -48,7 +47,42 @@ let feedbackController = {
         res.send(err.message);
       }
       else{
-        res.json("/viewFeedbacks");
+        res.redirect("/viewFeedbacks");
+      }
+    });
+  },
+// Delete all available feedbacks :: Testing reasons
+  deleteAllFeedbacks:function(req, res, next){
+    Feedback.remove(function(err, feedbacks){
+      if(err){
+        res.send(err.message);
+      }
+      else{
+        res.send("All feedbacks are deletedS");
+      }
+    });
+  },
+
+// Delete specific feedback using _id
+  deleteFeedback:function(req, res, next){
+    Feedback.remove({_id:req.params.feedback_id}, function(err, feedback){
+      if(err){
+        res.send(err.message);
+      }
+      else{
+        res.json("Deleted");
+      }
+    });
+  },
+// Update feedback's information
+  updateFeedback:function(req, res){
+    req.body.body = "New body"; // Will be provided through frontend
+    Feedback.update({_id:req.params._id}, req.body, function(err, feedback){
+      if(err){
+        res.send(err.message);
+      }
+      else {
+        res.send("Your feedback has been updated successfully.");
       }
     });
   }

@@ -1,7 +1,7 @@
-var mongoose= require('mongoose');
+var mongoose = require('mongoose');
 
-var feedbackSchema= mongoose.model({
-  description:{
+var feedbackSchema= mongoose.Schema({
+  body:{
     type:String,
     required:true,
     maxLength:5
@@ -20,5 +20,5 @@ var feedbackSchema= mongoose.model({
   }
 })
 
-var Feedback= mongoose.model("feedback", feedbackSchema);
-module.export=Feedback;
+var Feedback = mongoose.model("feedback", feedbackSchema);
+module.exports = Feedback;

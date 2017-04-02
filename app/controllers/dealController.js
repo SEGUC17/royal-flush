@@ -96,7 +96,12 @@ let dealController = {
     // req.body.expired;// Will be provided through frontend
     // req.body.event_id; // Will be provided through frontend
     Deal.update({_id:req.params.deal_id}, req.body, function(err, deal){
-      res.send("Deal '" + req.body.title + "' was successfully updated.");
+      if(err){
+        res.send(err.message);
+      }
+      else{
+        res.send("Deal '" + req.body.title + "' was successfully updated.");
+      }
     });
   }
 
