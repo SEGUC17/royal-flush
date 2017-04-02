@@ -63,7 +63,7 @@ let dealController = {
     Deal.find({start_date:{$lt:req.params.start_date}}, function(err, deals){
       if(err){
         res.send(err.message);
-      }
+      }//ff
       else{
         res.json(deals);
       }
