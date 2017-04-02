@@ -12,8 +12,9 @@ let client_profile_controller = { // the name of the client should be saved in a
 
         saveClientProfile:function(req, res){
 
-            console.log(req.body);
-            var clientName = "retrieve it from session";                     ////////////session
+            console.log(req.session);
+          //  var clientName = req.session.clientname;                     ////////////session
+            var clientname = "Amr";
             var clientDescription = req.body.description;
             var clientInfo = req.body.clientInfo;
             var clientPaymentInfo = req.body.paymentInfo;
@@ -26,7 +27,7 @@ let client_profile_controller = { // the name of the client should be saved in a
 
                                   };
 
-                                  console.log(clientProfileData);
+                            //      console.log(clientProfileData);
 
             let client_profile = new clientProfile(clientProfileData);
 
@@ -42,7 +43,11 @@ let client_profile_controller = { // the name of the client should be saved in a
 
 
         },
-
+/////////////////////////////////////////////////////////////
+        uploadClientFile:function(req, res){
+          res.render('addClientFile');
+        },
+/////////////////////////////////////////////////////////////
         uploadClientPicture:function(req, res){ // stores the name of the client which is unique and the name of the picture which is also unique in the database
 
       if(req.file == null){
@@ -61,7 +66,7 @@ let client_profile_controller = { // the name of the client should be saved in a
 
         /////////
         var picture = {
-                     clientName:"retrieve it from session",           ////////////session
+                     clientName:"Amr",           ////////////session
                      pictureName:picture_name
                    };
         let client_picture = new clientPicture(picture);
@@ -77,6 +82,8 @@ let client_profile_controller = { // the name of the client should be saved in a
       }
       },
 
+
+/////////////////////////////////////////////////////////////
         uploadClientVideo:function(req, res){   // stores the name of the client which is unique and the name of the video which is also unique in the database
 
       if(req.file == null){
@@ -95,7 +102,7 @@ let client_profile_controller = { // the name of the client should be saved in a
 
         /////////
         var video = {
-                     clientName:"retrieve it from session",               ////////////session
+                     clientName:"Amr",               ////////////session
                      videoName:video_name
                    };
         let client_video = new clientVideo(video);
@@ -109,8 +116,98 @@ let client_profile_controller = { // the name of the client should be saved in a
         });
         }
       }
-    }
+    },
 
+/////////////////////////////////////////////////////////////
+
+      viewClientProfile:function(req, res){
+
+        /////clientname is retrieved from session
+
+      //  var clientname = req.session.clientname;
+          var clientname = "Amr";
+
+        var getProfile = clientProfile.findOne({'clientName':clientname}, 'clientName clientDescription clientInfo paymentInfo', function(err, clientProfile){
+
+            if(err){
+
+                  console.log(err.message);
+
+
+            }else if(clientProfile == null){
+
+                console.log("no profile with this client name!");
+
+                return;
+
+            }else{
+
+              //    var clientProfile = {clientName:clientprofile.clientName, clientDescription:clientprofile.clientDescription, clientInfo:clientprofile.clientInfo, paymentInfo:clientprofile.paymentInfo};
+
+
+//////////////////// get pictures
+                  var clientPicturesResult;
+                  clientPicture.find({'clientName':clientProfile.clientName}, 'pictureName', function(err, clientPictures){
+
+                      if(err){
+
+                         console.log(err.message);
+                         return;
+
+                      }else if(clientPictures == null){
+
+                        console.log("There is no pictures available!");
+                        getClientVideos();
+                        return;
+
+                      }else{
+
+                      //  console.log(clientPictures);
+                        clientPicturesResult = clientPictures;
+                        getClientVideos();
+                      // res.render('viewClientProfile', {clientProfile, clientPicturesResult});
+
+                      }
+
+
+
+                  });
+
+//////////////////////////// get videos
+
+         function getClientVideos(){
+          clientVideo.find({'clientName':clientProfile.clientName}, 'videoName', function(err, clientVideos){
+
+
+              if(err){
+
+                console.log(err.message);
+                return;
+
+              }else{
+
+               clientVideosResult = clientVideos;
+              console.log(clientVideosResult);
+            //  console.log(clientPicturesResult);
+             res.render('viewClientProfile', {clientProfile, clientPicturesResult, clientVideosResult});
+              }
+
+
+
+          });
+        }
+
+   //console.log(clientVideosResult);
+
+
+
+
+            }
+
+
+        });
+
+      },
 
 
 }

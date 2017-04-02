@@ -13,8 +13,8 @@ let client_event_controller = { // the name of the client should be saved in a s
       var sDate = new Date(req.body.startingDate.toString());
       var eDate = new Date(req.body.endingDate.toString());
 
-      console.log(req.body);
-      var clientName = "retrieve it from session";          ////////////session
+      //console.log(req.body);
+      var clientName = req.session.clientname;          ////////////session
       var eventName =  req.body.event;
       var startingDate = (new Date(req.body.startingDate)).toDateString();
       var endingDate = (new Date(req.body.endingDate)).toDateString();
@@ -25,7 +25,7 @@ let client_event_controller = { // the name of the client should be saved in a s
         console.log("Start date is after the end date!");
         return;
       }
-      console.log(startingDate);
+    //  console.log(startingDate);
 
       var clientEventData = {
                               clientName:clientName,
