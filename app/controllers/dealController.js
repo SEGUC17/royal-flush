@@ -26,7 +26,7 @@ let dealController = {
     });
   },
 // View single deal using deal_id
-  viewDeal:function(req, res){
+  getDeal:function(req, res){
     Deal.findOne({_id:req.params.deal_id}, function(err, deal){
       if(err){
         res.send(err.message);
@@ -36,8 +36,8 @@ let dealController = {
       }
     });
   },
-
-  viewCategoryDeals:function(req, res){
+// View deals by category
+  getCategoryDeals:function(req, res){
     Deal.find({category:req.params.category}, function(err, deals){
       if(err){
         res.send(err.message);
@@ -47,9 +47,9 @@ let dealController = {
       }
     });
   },
-
-  viewBudgetDeals:function(req, res){
-    Deal.find({price:req.params.price}, function(err, deals){
+// View deals by Budget
+  getBudgetDeals:function(req, res){
+    Deal.find({price:{$lt:req.params.price+1}}, function(err, deals){
       if(err){
         res.send(err.message);
       }
@@ -58,8 +58,19 @@ let dealController = {
       }
     });
   },
-
-  viewTodayDeals:function(req, res){
+// View deals by Date
+  getDateDeals:function(req, res){
+    Deal.find({start_date:{$lt:req.params.start_date}}, function(err, deals){
+      if(err){
+        res.send(err.message);
+      }
+      else{
+        res.json(deals);
+      }
+    });
+  },
+// View deals on current_date
+  getTodayDeals:function(req, res){
     var current_date = Date();
     Deal.find({start_date:current_date, expired:0}, function(err, deals){
       if(err){
@@ -69,7 +80,8 @@ let dealController = {
         res.json(deals);
       }
     });
-  }
+  },
+
 // Add a new Deal using client_id
   addNewDeal:function(req, res){
     // req.body.client_id = req.session.id; //Session value
@@ -82,7 +94,7 @@ let dealController = {
     // req.body.image_path = req.file.path; // Will be provided through frontend
     req.body.expired = true; // Will be provided through frontend
     req.body.event_id = "3"; // Will be provided through frontend
-    req.body.category = "Food"; // Will be provided through frontend
+    req.body.category = "food"; // Will be provided through frontend
     ///
     req.body.client_id = "2"; // Session value
 

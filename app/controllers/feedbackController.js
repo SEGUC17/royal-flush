@@ -24,7 +24,7 @@ let feedbackController = {
     });
   },
 // View single feedback using feedback_id
-  viewFeedback:function(req, res){
+  getFeedback:function(req, res){
     Feedback.findOne({_id:req.params.feedback_id}, function(err, feedback){
       if(err){
         res.send(err.message);
@@ -58,7 +58,7 @@ let feedbackController = {
         res.send(err.message);
       }
       else{
-        res.send("All feedbacks are deletedS");
+        res.send("All feedbacks are deleted.");
       }
     });
   },
