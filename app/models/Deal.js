@@ -43,6 +43,10 @@ var dealSchema = mongoose.Schema({
   event_id:{
     type:String,
     default:"0"
+  },
+  category:{
+    type:String,
+    required:true
   }
 })
 

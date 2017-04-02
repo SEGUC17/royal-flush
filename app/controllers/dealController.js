@@ -36,6 +36,40 @@ let dealController = {
       }
     });
   },
+
+  viewCategoryDeals:function(req, res){
+    Deal.find({category:req.params.category}, function(err, deals){
+      if(err){
+        res.send(err.message);
+      }
+      else{
+        res.json(deals);
+      }
+    });
+  },
+
+  viewBudgetDeals:function(req, res){
+    Deal.find({price:req.params.price}, function(err, deals){
+      if(err){
+        res.send(err.message);
+      }
+      else{
+        res.json(deals);
+      }
+    });
+  },
+
+  viewTodayDeals:function(req, res){
+    var current_date = Date();
+    Deal.find({start_date:current_date, expired:0}, function(err, deals){
+      if(err){
+        res.send(err.message);
+      }
+      else{
+        res.json(deals);
+      }
+    });
+  }
 // Add a new Deal using client_id
   addNewDeal:function(req, res){
     // req.body.client_id = req.session.id; //Session value
@@ -48,6 +82,7 @@ let dealController = {
     // req.body.image_path = req.file.path; // Will be provided through frontend
     req.body.expired = true; // Will be provided through frontend
     req.body.event_id = "3"; // Will be provided through frontend
+    req.body.category = "Food"; // Will be provided through frontend
     ///
     req.body.client_id = "2"; // Session value
 
