@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var registrationSchema = mongoose.Schema({
+var reservationSchema = mongoose.Schema({
     eventId: {
         type: String,
         required: true
@@ -16,8 +16,13 @@ var registrationSchema = mongoose.Schema({
     acceptsRefundPolicy: {
         type: Boolean,
         required: true
+    },
+    cancelled: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 });
 
-var Registration = mongoose.model("registration", registrationSchema);
-module.exports = Registration;
+var Reservation = mongoose.model("reservation", reservationSchema);
+module.exports = Reservation;
