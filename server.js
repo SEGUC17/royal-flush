@@ -8,12 +8,15 @@ var app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 mongoose.connect(DB_URI);
 app.use(router);
 
-app.listen(8080, function(){
-  console.log("Server is listening on port 8080");
+app.listen(8080, function() {
+    console.log("Server is listening on port 8080");
 })
