@@ -59,7 +59,7 @@ let client_event_controller = { // the name of the client should be saved in a s
     /////clientname is retrieved from session
 
   //  var clientname = req.session.clientname;
-      var clientname = "Amr";
+      var clientname = req.session.clientname;
 
       var getEvents = clientEvent.find({'clientName':clientname}, 'clientName eventName startingDate endingDate price', function(err, events){
 
@@ -123,8 +123,8 @@ let client_event_controller = { // the name of the client should be saved in a s
 },
 
 deleteClientEvent:function(req, res){
-  var clientName = "Sooondos";
-  var eventName = "sasa";
+  var clientName = req.session.clientname;
+  var eventName = req.body.eventName;
   clientEvent.remove({'clientName':clientName, 'eventName':eventName}, function(err){
       if(err){
             console.log(err.message);
