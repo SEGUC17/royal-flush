@@ -6,7 +6,7 @@ var reservationController = {
         reservation.save(function(err, reservation) {
             if (err) {
                 res.json({
-                    error: err.message,
+                    error: err,
                     data: null
                 });
             } else {
@@ -16,24 +16,30 @@ var reservationController = {
                 });
             }
         });
-    }
+    },
 
-    /*  cancelReservation: function(req, res) {
-          var reservation = new Reservation(req.body.reservation);
-          reservation.update(function(err, reservation) {
-                  if (err) {
-                      res.json({
-                          error: err.message,
-                          date: null
-                      });
-                  } else {
-                      res.json({
-                          error: null,
-                          data: reservation
-                      });
-                  }
-              }
-          }); */
+    cancelReservation: function(req, res) {
+        var res = Reservation.findOne({
+            _id: req.body
+        });
+        res.update(query, {
+            $set: {
+                cancelled: true
+            }
+        }, function(err, reservation) {
+            if (err) {
+                res.json({
+                    error: err.message,
+                    date: null
+                });
+            } else {
+                res.json({
+                    error: null,
+                    data: reservation
+                });
+            }
+        })
+    }
 };
 
 
