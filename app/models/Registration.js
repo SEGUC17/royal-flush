@@ -8,7 +8,7 @@ var registrationSchema = mongoose.Schema({
     userId: {
         type: String,
         required: true
-    }
+    },
     tier: {
         type: String,
         required: true

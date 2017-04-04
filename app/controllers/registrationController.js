@@ -11,12 +11,13 @@ var registrationController = {
                 });
             } else {
                 res.json({
-                        error: null,
-                        data: registration
-                    }
+                    error: null,
+                    data: registration
                 });
+            }
         });
     }
 };
+
 
 module.exports = registrationController;
