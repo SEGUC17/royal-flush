@@ -6,6 +6,7 @@ var client_profile_schema = mongoose.Schema({
   clientDescription:String,
   clientInfo:String,
   paymentInfo:String,
+  category:String,
 
 },{
   versionKey: false

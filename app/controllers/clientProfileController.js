@@ -14,16 +14,19 @@ let client_profile_controller = { // the name of the client should be saved in a
 
             console.log(req.session);
           //  var clientName = req.session.clientname;                     ////////////session
-            var clientname = "Amr";
+            var clientname = req.session.clientname;
             var clientDescription = req.body.description;
             var clientInfo = req.body.clientInfo;
             var clientPaymentInfo = req.body.paymentInfo;
+            var category = req.body.category;
+
 
             var clientProfileData = {
-                                    clientName:clientName,
+                                    clientName:clientname,
                                     clientDescription:clientDescription,
                                     clientInfo:clientInfo,
-                                    paymentInfo:clientPaymentInfo
+                                    paymentInfo:clientPaymentInfo,
+                                    category:category
 
                                   };
 
@@ -66,7 +69,7 @@ let client_profile_controller = { // the name of the client should be saved in a
 
         /////////
         var picture = {
-                     clientName:"Amr",           ////////////session
+                     clientName:req.session.clientname,           ////////////session
                      pictureName:picture_name
                    };
         let client_picture = new clientPicture(picture);
@@ -103,7 +106,7 @@ let client_profile_controller = { // the name of the client should be saved in a
 
         /////////
         var video = {
-                     clientName:"Amr",               ////////////session
+                     clientName:req.session.clientname,               ////////////session
                      videoName:video_name
                    };
         let client_video = new clientVideo(video);
@@ -127,9 +130,9 @@ let client_profile_controller = { // the name of the client should be saved in a
         /////clientname is retrieved from session
 
       //  var clientname = req.session.clientname;
-          var clientname = "Amr";
+          var clientname = req.session.clientname;
 
-        var getProfile = clientProfile.findOne({'clientName':clientname}, 'clientName clientDescription clientInfo paymentInfo', function(err, clientProfile){
+        var getProfile = clientProfile.findOne({'clientName':clientname}, 'clientName clientDescription clientInfo paymentInfo category', function(err, clientProfile){
 
             if(err){
 
@@ -195,6 +198,56 @@ let client_profile_controller = { // the name of the client should be saved in a
         });
 
       },
+
+      updateClientProfile:function(req, res){
+
+        var clientname = req.session.clientname;
+        var clientDescription = req.body.description;
+        var clientInfo = req.body.clientInfo;
+        var clientPaymentInfo = req.body.paymentInfo;
+        var category = req.body.category;
+
+        clientProfile.findOne({'clientName':clientname}, function(err, clientProfile){
+            if(err){
+                  console.log(err.message);
+            }else if(clientProfile == null){
+                console.log("no profile with this client name!");
+                return;
+              }else{
+                  if(clientDescription != null){
+                    clientProfile.clientDescription = clientDescription;
+                  }
+                  if(clientInfo != null){
+                    clientProfile.clientInfo = clientInfo;
+                  }
+                  if(clientPaymentInfo != null){
+                    clientProfile.clientPaymentInfo = clientPaymentInfo;
+                  }
+                  if(category != null){
+                    clientProfile.category = category;
+                  }
+                  clientProfile.save(function(err){
+                        if(err){
+                          console.log(err.message);
+                        }else{
+                          console.log("saved");
+                        }
+                  });
+              }
+      });
+    },
+
+    deleteClientProfile:function(req, res){
+      var clientname = req.session.clientname;
+      clientProfile.remove({'clientName':clientname}, function(err){
+          if(err){
+                console.log(err.message);
+          }else{
+                console.log("Client profile removed!");
+          }
+    });
+  },
+
 
 
 }

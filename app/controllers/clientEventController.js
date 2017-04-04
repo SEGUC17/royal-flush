@@ -14,7 +14,7 @@ let client_event_controller = { // the name of the client should be saved in a s
       var eDate = new Date(req.body.endingDate.toString());
 
       //console.log(req.body);
-      var clientName = "Amr";          ////////////session
+      var clientName = req.session.clientname;          ////////////session
       var eventName =  req.body.eventName;
       var startingDate = (new Date(req.body.startingDate)).toDateString();
       var endingDate = (new Date(req.body.endingDate)).toDateString();
@@ -75,7 +75,64 @@ let client_event_controller = { // the name of the client should be saved in a s
 
       });
 
-  }
+  },
+
+  updateClientEvent:function(req, res){
+
+    var clientName = req.session.clientname;
+    var eventName = req.body.eventName;
+    var startingDate = req.body.startingDate;
+    var endingDate = req.body.endingDate;
+    var price = req.body.price;
+
+    var sDate = new Date(startingDate.toString());
+    var eDate = new Date(endingDate.toString());
+
+    clientEvent.findOne({'clientName':clientName, 'eventName':eventName}, function(err, clientEvent){
+        if(err){
+              console.log(err.message);
+        }else if(clientEvent == null){
+            console.log("no event found!");
+            return;
+          }else{
+              if(eventName != null){
+                clientEvent.eventName = eventName;
+              }
+              if(startingDate != null){
+                clientEvent.startingDate = startingDate;
+              }
+              if(endingDate != null){
+                clientEvent.endingDate = endingDate;
+              }
+              if(price != null){
+                clientEvent.price = price;
+              }
+              if(sDate > eDate){
+                console.log("Start date is after end date!");
+                return;
+              }
+              clientEvent.save(function(err){
+                    if(err){
+                      console.log(err.message);
+                    }else{
+                      console.log("saved");
+                    }
+              });
+          }
+  });
+},
+
+deleteClientEvent:function(req, res){
+  var clientName = "Sooondos";
+  var eventName = "sasa";
+  clientEvent.remove({'clientName':clientName, 'eventName':eventName}, function(err){
+      if(err){
+            console.log(err.message);
+      }else{
+            console.log("Client event removed!");
+      }
+});
+},
 
 }
 
