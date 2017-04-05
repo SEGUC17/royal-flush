@@ -4,19 +4,56 @@ var bcrypt   = require('bcrypt-nodejs');
 var clientSchema= mongoose.Schema({
 
       local            : {
-          name      : String,
-          username  : String,
-          email     : String,
-          password  : Number,
-          address   :String,
-          created   :Date,
-          phone     :Number,
-          verified  :Boolean,
-          start_hour :String,
-          end_hour  :String,
-          working_days :String,
-          category: String
+          name      : {
+          type:String,
+          required :true
+        },
+          username  :{
+            type:String,
+            required:true,
+            unique:true
+          },
+          email     :{
+            type:String,
+            required:true
 
+          },
+          password  : {
+            type:String,
+            required:true
+          },
+          address   :{
+          type:  String,
+          required:true
+        },
+          created   :{
+            type : Date,
+            default : Date.now
+          },
+          phone     :{
+          type:  Number,
+          required:true
+        },
+          verified  :{
+          type:  Boolean,
+          required:true
+        },
+          start_hour :{
+          type:  String,
+          required:true
+        },
+          end_hour  :{
+          type:  String,
+          required:true
+        },
+          working_days :{
+          type:  String,
+          required:true
+        },
+          category:{
+          type:String,
+          required: true
+},
       },
   });
 
