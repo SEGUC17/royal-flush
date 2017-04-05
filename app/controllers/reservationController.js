@@ -19,10 +19,13 @@ var reservationController = {
     },
 
     cancelReservation: function(req, res) {
-        var res = Reservation.findOne({
-            _id: req.body
-        });
-        res.update(query, {
+        // var res = Reservation.findOne({
+        //     _id: req.body._id
+        // });
+        var query = {
+            _id: req.body._id
+        }
+        Reservation.update(query, {
             $set: {
                 cancelled: true
             }
