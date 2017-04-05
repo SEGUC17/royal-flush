@@ -1,11 +1,11 @@
 var mongoose=reqiure('mongoose');
 
 var subscriptionSchema= mongoose.Schema({
-  clientUsername:{
+  clientId:{
     type:String,
     required:true
   },
-  userUsername:{
+  userId:{
     type:String,
     required:true
   }

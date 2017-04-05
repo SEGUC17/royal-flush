@@ -1,27 +1,35 @@
 let User = require('../models/User');
+let Client= require('../models/Client');
 let Subscription= require('../models/Subscription');
 let Notification= require('../models/Notification');
 
 let userController = {
   // Add user methods
   userSubscribeToClient:function(req,res){
-    let subscription = new Subscription({"clientUsername": req.body.username,"userUsername": req.session.username});
-    user.save(function(err, subscription){
+    Client.findOne({client.Id: req.body.clientId}, function(err, client){
       if(err){
-        let errMessage="error occured when subscribing ";
-        res.redirect('/SubscriptionError',errmessage);
+        res.send('Client Error try again later');
       }else{
-        res.redirect("/subscribed");
+        let subscription = new Subscription({"clientId": req.body.clientId,"userId": req.session.user.Id});
+        user.save(function(err, subscription){
+          if(err){
+            let errMessage="error occured when subscribing ";
+            res.redirect('/SubscriptionError',errmessage);
+          }else{
+            res.redirect("/subscribed");
+          }
+        });
       }
-    })
+    });
+
   },
     userUnsubscribe:function(req,res){
-      Subscription.remove({"clientUsername": req.body.username,"userUsername": req.session.username});
+      Subscription.remove({"clientId": req.body.userId,"userId": req.session.user.Id});
       res.redirect('/userUnsubscribe');
     }
   },
 //  notifyUsers:function(req,res)
 
-}
+
 
 module.exports = userController;

@@ -1,11 +1,11 @@
 var mongoose=require('mongoose');
 
 var notificationSchema=mongoose.Schema({
-  clientUsername:{
+  clientId:{
     type:String,
     required:true
   },
-  userUsername:{
+  userId:{
     type:String,
     required:true
   },

@@ -4,7 +4,7 @@ let Notification= require('../models/Notification');
 let clientController ={
   collectingSubscription:function(req,res){
     let subscriptions;
-    Subscription.find({"clientUsername":req.session.username},function(err,subscriptions){
+    Subscription.find({"clientId":req.session.clientId},function(err,subscriptions){
       if(err){
         res.send(err.message);
       }else{
@@ -13,7 +13,7 @@ let clientController ={
       }
     })
     for (var i = 0; i < subscriptions.length; i++) {
-      let notification = new Notification ({"clientUsername": subscriptions[i].clientUsername, "username": subscriptions[i].userUsername, "viewed": false; "message": "new event created by "+req.session.name});
+      let notification = new Notification ({"clientId": subscriptions[i].clientId, "userId": subscriptions[i].userId, "viewed": false; "message": "new event created by "+req.session.name});
       notification.save(function(err, notification){
         if(err){
           res.send(err.message);
@@ -22,5 +22,6 @@ let clientController ={
         }
       })
     },
+}
 }
 module.exports = clientController;
