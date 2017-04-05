@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+// add autoincrement reservationId
 var reservationSchema = mongoose.Schema({
   booked_date_time:{
     type:Date,
