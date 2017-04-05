@@ -1,18 +1,17 @@
-
 var LocalStrategy   = require('passport-local').Strategy;
-var User= require('../models/User');
-
+var Client= require('../models/Client');
 
 module.exports = function(passport) {
     // used to serialize the user for the session
-    passport.serializeUser(function(user, done) {
-        done(null, user.id);
+    passport.serializeUser(function(client, done) {
+        done(null, client.id);
     });
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
-            done(err, user);
+        User.findById(id, function(err, client) {
+          console.log(client.id);
+            done(err, client);
         });
     });
 
@@ -30,21 +29,23 @@ module.exports = function(passport) {
         process.nextTick(function() {
 
       //check if the user already exist
-        User.findOne({ 'local.email' :  email }, function(err, user) {
+        User.findOne({ 'local.email' :  email }, function(err, client) {
 
             if (err)
                 return done(err);
-            if (user) {
+            if (clinet) {
                 return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
             } else {
 
-                var new_user = new User();
-                new_user.local.email    = email;
-                new_user.local.password = new_user.generateHash(password);
-                new_user.save(function(err) {
+                var new_client = new Client();
+
+                new_client.local.email    = email;
+                new_client.local.password = new_client.generateHash(password);
+                  // console.log(passport.session.email);
+                new_client.save(function(err) {
                     if (err)
                         throw err;
-                    return done(null, new_user);
+                    return done(null, new_client);
                 });
             }
         });
@@ -62,20 +63,20 @@ module.exports = function(passport) {
     function(req, email, password, done) {
 
       //check if the user axists
-        User.findOne({ 'local.email' :  email }, function(err, user) {
+        User.findOne({ 'local.email' :  email }, function(err, client) {
 
             if (err)
                 return done(err);
 
-            if (!user)
+            if (!client)
                 return done(null, false, req.flash('loginMessage', 'You are not found'));
 
 
-            if (!user.validPassword(password))
+            if (!client.validPassword(password))
                 return done(null, false, req.flash('loginMessage', ' Wrong password'));
 
 
-            return done(null, user);
+            return done(null, client);
         });
 
     }));

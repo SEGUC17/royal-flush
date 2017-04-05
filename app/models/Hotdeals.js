@@ -1,32 +1,31 @@
 var mongoose = require('mongoose');
 
-//var mongoose = require('mongoose');
-// var bcrypt   = require('bcrypt-nodejs');
-
-// define the schema for our user model
 var hot_dealsSchema = mongoose.Schema({
-
-    local            : {
-        title        : String,
-        password     : String,
+    title:{
+        type:String,
+        required:true,
+        unique:true
     },
+  description:{
+    type:String,
+    required:true
+  },
+  date:{
+    type:Date,
+    required:true
+  }
+  image:{
+    type:String,
+    required:true
+  }
+  category:{
+    type:String,
+    required:true
+  }
 
-});
 
-// methods ======================
-// generating a hash
-// userSchema.methods.generateHash = function(password) {
-//     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-// };
-//
-// // checking if password is valid
-// userSchema.methods.validPassword = function(password) {
-//     return bcrypt.compareSync(password, this.local.password);
-// };
+})
 
-// create the model for users and expose it to our app
-module.exports = mongoose.model('hot_deals', hot_dealsSchema);
-
-var hot_deals = mongoose.model("hot_deals", hot_dealsSchema);
+var hot_deals = mongoose.model("HotDeals", hot_dealsSchema);
 
 module.exports = hot_deals;
