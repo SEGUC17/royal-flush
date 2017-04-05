@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var dealController = require('./controllers/dealController');
 var feedbackController = require('./controllers/feedbackController');
+var clientController = require('./controllers/clientController');
+var reservationController = require('./controllers/reservationController');
 
 // Deal Routes
 router.get('/viewDeal/:deal_id', dealController.getDeal);
@@ -23,5 +25,12 @@ router.get('/addNewFeedback/:client_id', feedbackController.addNewFeedback); // 
 router.get('/deleteAllFeedbacks', feedbackController.deleteAllFeedbacks);
 router.get('/deleteFeedback/:feedback_id', feedbackController.deleteFeedback);
 router.get('/updateFeedback/:feedback_id', feedbackController.updateFeedback); // Should change to post when frontend is added
+// Client Routes
+router.get('/getAllClients', clientController.getAllClients);
+router.get('/addNewClient', clientController.addNewClient);
+router.get('/getCategoryClients/:category', clientController.getCategoryClients)
+// Reservation Routes
+router.get('/makeReservation/:client_id/:reservation_date', reservationController.makeReservation);
+router.get('/viewReservations', reservationController.getAllReservations);
 
 module.exports = router;
