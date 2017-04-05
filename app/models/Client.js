@@ -3,15 +3,13 @@ var bcrypt   = require('bcrypt-nodejs');
 
 var clientSchema= mongoose.Schema({
 
-  var userSchema = mongoose.Schema({
-
       local            : {
           name      : String,
           username  : String,
           email     : String,
           password  : Number,
           address   :String,
-          created   :Date.now,
+          created   :Date,
           phone     :Number,
           verified  :Boolean,
           start_hour :String,
@@ -21,7 +19,6 @@ var clientSchema= mongoose.Schema({
 
       },
   });
-})
 
 var Client = mongoose.model("client", clientSchema);
 module.exports = Client;

@@ -9,7 +9,7 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, client) {
+        Client.findById(id, function(err, client) {
           console.log(client.id);
             done(err, client);
         });
@@ -29,11 +29,11 @@ module.exports = function(passport) {
         process.nextTick(function() {
 
       //check if the user already exist
-        User.findOne({ 'local.email' :  email }, function(err, client) {
+        Client.findOne({ 'local.email' :  email }, function(err, client) {
 
             if (err)
                 return done(err);
-            if (clinet) {
+            if (client) {
                 return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
             } else {
 
@@ -63,7 +63,7 @@ module.exports = function(passport) {
     function(req, email, password, done) {
 
       //check if the user axists
-        User.findOne({ 'local.email' :  email }, function(err, client) {
+        Client.findOne({ 'local.email' :  email }, function(err, client) {
 
             if (err)
                 return done(err);
@@ -72,7 +72,7 @@ module.exports = function(passport) {
                 return done(null, false, req.flash('loginMessage', 'You are not found'));
 
 
-            if (!client.validPassword(password))
+            if (!Client.validPassword(password))
                 return done(null, false, req.flash('loginMessage', ' Wrong password'));
 
 
@@ -80,5 +80,6 @@ module.exports = function(passport) {
         });
 
     }));
+
 
 };

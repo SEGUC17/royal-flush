@@ -1,6 +1,6 @@
 var express  = require('express');
 var app      = express();
-var port     = process.env.PORT || 8080;
+// var port     = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
@@ -11,7 +11,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
-var config =require('./app/controllers/userPassport')(passport);
+var config =require('./app/controllers/clientPassport')(passport);
 var DB_URI = "mongodb://localhost:27017/DB1";
 
 //var app = express();
@@ -30,7 +30,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-require('./app/clientroutes.js')(app, passport); // load our routes and pass in our app and fully configured passp
+require('./app/userroutes.js')(app, passport); // load our routes and pass in our app and fully configured passp
 
 mongoose.connect(DB_URI);
 // app.use(router);
