@@ -30,7 +30,9 @@ router.get('/getAllClients', clientController.getAllClients);
 router.get('/addNewClient', clientController.addNewClient);
 router.get('/getCategoryClients/:category', clientController.getCategoryClients)
 // Reservation Routes
-router.get('/makeReservation/:client_id/:reservation_date', reservationController.makeReservation);
+router.get('/makeReservation/:client_id/:booked_date_time', reservationController.makeReservation);
 router.get('/viewReservations', reservationController.getAllReservations);
+router.get('/viewReservation/:reservation_id', reservationController.getReservation);
+router.get('/cancelReservation/:reservation_id', reservationController.cancelReservation);
 
 module.exports = router;

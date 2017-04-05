@@ -6,8 +6,8 @@ let reservationController = {
   makeReservation:function(req, res){
     var week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     var user_id = "1"; //Value changes with session
-    var client_id = req.params.client_id // "58e42d53aef6b8217ee81d37";
-    var reservation_date = req.params.booked_date_time // new Date("2017-05-18T00:00:00Z");
+    var client_id = req.params.client_id; // "58e42d53aef6b8217ee81d37";
+    var reservation_date = new Date(req.params.booked_date_time); // new Date("2017-05-18T00:00:00Z");
     var reservation_day = week[reservation_date.getDay()].toLowerCase();
 
     Client.findOne({_id:client_id}, function(err, client){
@@ -56,7 +56,31 @@ let reservationController = {
         res.json(reservations);
       }
     });
-  }
+  },
+
+getReservation:function(req, res){
+  Reservation.findOne({_id:req.params.reservation_id}, function(err, reservation){
+    if(err){
+      res.send(err.message);
+    }
+    else {
+      res.json(reservation);
+    }
+  });
+},
+
+cancelReservation:function(req, res, next){
+  var user_id = 1; //Value changes with session
+  var reservation_id = req.params.reservation_id;
+  Reservation.remove({_id:reservation_id, user_id:user_id}, function(err, reservation){
+    if(err){
+      res.send(err.message);
+    }
+    else {
+      res.send("Reservation cancelled");
+    }
+  });
+}
 }
 
 module.exports = reservationController;
