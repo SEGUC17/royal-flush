@@ -45,7 +45,6 @@ let clientController = {
     req.body.start_hour = "08:00";
     req.body.end_hour = "23:59";
     req.body.working_days = "saturday,sunday,monday,thursday";
-
     let client = new Client(req.body);
     client.save(function(err, client){
       if(err){
