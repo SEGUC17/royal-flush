@@ -3,6 +3,11 @@ var router = express.Router();
 var clientController= require('./controllers/clientController');
 var userController=require('./controllers/userController');
 
+// Adding two controller dependencies that were missing
+
+var client_profile_controller = require('./controllers/clientProfileController');
+var client_profile_event_controller = require('./controllers/clientEventController');
+
 //Add routes here
 router.get('/collectingSubscription',clientController.collectingSubscription);
 router.get('/getAllClients',clientController.getAllClients);
