@@ -2,7 +2,6 @@ let Administrator = require('../models/Client');
 
 let administratorController = {
 
-//   let administratorController = {
 
   getAllUnverifiedClients:function(req, res){
 
@@ -15,14 +14,6 @@ let administratorController = {
       })
  }
 }
-//const clients = [{name:ahmed, verified:false, address:asd}, {name:omar, verified:true, address:qwe}, {name:hazem, verified:false, address:opo}];
 
-// client.insertMany(clients,function(err, docs){
-//   if(err)
-//       res.send(err)
-// })
-
-// }
-// }
 
 module.exports = administratorController;
