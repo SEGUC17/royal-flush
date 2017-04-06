@@ -5,14 +5,14 @@ var emailController = require('./controllers/emailController');
 var mandrill = require('node-mandrill')('AIzaSyATF9snxRM9NRydzxDnZvO9JMVS1fePrXA'); 
 //Add routes here
 
-router.get('/varifyClients',varifyClientControler.ViewUnverifiedClients);
+router.get('/varifyClients',verifyClientController.ViewUnverifiedClients);
 
-router.get('/ViewClient',varifyClientController.ViewClient);
+router.get('/ViewClient',verifyClientController.ViewClient);
 
 router.post( '/api/sendemail/',emailController.VerificationEmail);
 
 router.post( '/api/sendemail/',emailController.RejectionEmail);
 
-router.post('/ViewClient',varifyClientsController.verifyClient);
+router.post('/ViewClient',verifyClientsController.verifyClient);
 
 module.exports = router;
