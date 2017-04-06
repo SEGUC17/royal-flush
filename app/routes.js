@@ -21,6 +21,12 @@ var clientController= require('./controllers/clientController');
 var userController=require('./controllers/userController');
 var dealController = require('./controllers/dealController');
 var feedbackController = require('./controllers/feedbackController');
+
+// Adding two controller dependencies that were missing
+
+var client_profile_controller = require('./controllers/clientProfileController');
+var client_profile_event_controller = require('./controllers/clientEventController');
+
 // Deal Routes
 router.get('/viewDeal/:deal_id', dealController.getDeal);
 router.get('/viewDeals', dealController.getAllDeals);
