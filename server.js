@@ -11,7 +11,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
-var config =require('./app/controllers/clientPassport')(passport);
+var config =require('./app/controllers/userPassport')(passport);
 var DB_URI = "mongodb://localhost:27017/DB1";
 
 //var app = express();
