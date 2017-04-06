@@ -3,7 +3,7 @@ let hot_deals = require('../models/hot_deals');
 
 let hot_deals_config = {
 
-    create_hot_deals:function(req, res){
+    create_hot_deals:function(req, res){//create hot deal through the client_id with the schmea
       //req.body.client_username=req.session.username;
         let hotdeal = new hot_deals(req.body);
 
