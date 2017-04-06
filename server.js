@@ -19,6 +19,7 @@ app.set('view engine', 'ejs');
 
 
 
+
 ///////// multer
 app.post('/uploadClientPicture',  multer({dest: './public/uploads/ClientPicturesUploads/'}).single('myImage'), client_profile_controller.uploadClientPicture); // uploads video using multer to destination then calls picture method
 app.post('/uploadClientVideo',  multer({dest: './public/uploads/ClientVideosUploads/'}).single('myVideo'), client_profile_controller.uploadClientVideo);     // uploads video  using multer to destination then calls video method
@@ -28,6 +29,11 @@ app.post('/uploadClientVideo',  multer({dest: './public/uploads/ClientVideosUplo
 
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+
+
+
+
 app.use(express.static(__dirname + '/public'));
 
 
@@ -44,12 +50,7 @@ app.use(session({
 
 app.use(router);
 
-session.clientname = "Amr Abu Greedah";
-// connecting to port 8080
 
-app.listen(8080, function(){
-
-
+app.listen(8080, function() {
     console.log("Server is listening on port 8080");
-
-});
+})
