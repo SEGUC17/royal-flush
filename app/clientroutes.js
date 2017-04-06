@@ -11,7 +11,7 @@ module.exports = function(app, passport) {
 
         res.render('login.ejs', { message: req.flash('loginMessage') });
     });
-
+// in order to get passport session to save the id to be used after (login process)
     app.post('/login', passport.authenticate('local-login', {
      successRedirect : '/profile',
      failureRedirect : '/login',
@@ -25,13 +25,14 @@ module.exports = function(app, passport) {
         res.render('signup.ejs', { message: req.flash('signup complete !') });
     });
 
+  // in order to get passport session to save the id to be used after (signup process)
 
     app.post('/signup', passport.authenticate('local-signup', {
     successRedirect : '/profile',
     failureRedirect : '/signup',
     failureFlash : true
 }));
-
+// view data of the client
 
     app.get('/profile', isLoggedIn, function(req, res) {
         res.render('profile.ejs', {
@@ -46,7 +47,7 @@ module.exports = function(app, passport) {
     });
 };
 
-
+// check if the client logged in or not
 function isLoggedIn(req, res, next) {
 
 
