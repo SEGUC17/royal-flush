@@ -1,5 +1,7 @@
 let Subscription= require('../models/Subscription');
 let Notification= require('../models/Notification');
+let Client= require('../models/Clients');
+let clientEvent= require('../models/clientEvent');
 
 let clientController ={
   collectingSubscription:function(req,res){
@@ -22,6 +24,39 @@ let clientController ={
         }
       })
     },
-}
+},
+  getAllClients:function(req, res){
+    Client.find(function(err, clients){
+      if(err){
+        res.send(err.message);
+      }else{
+        res.render('hompage',{clients});
+      }
+    })
+  },
+  searchForClients:function(req, res){
+    let es;
+    let cs;
+
+    let searchKey = req.body.searchKey ;
+    Client.find({"name":searchKey||"address":searchKey}, function(err, clients){
+      if(err){
+        res.send("error with search");
+
+      }else{
+        cs={clients};
+      }
+    });
+    clientEvent .find({"eventName":searchKey||"startingDate":searchKey || "endDate": searchKey }, function(err, clientEvents){
+      if(err){
+        res.send("error with search");
+
+      }else{
+        es={clientEvents};
+      }
+    });
+    cs.push(es);
+    res.render("search",cs);
+  }
 }
 module.exports = clientController;
