@@ -1,3 +1,4 @@
+
 // require dependencies
 
 var express = require('express');
@@ -18,9 +19,9 @@ var client_profile_controller = require('./app/controllers/clientProfileControll
 var app = express();
 app.set('view engine', 'ejs');
 
-<<<<<<< HEAD
-app.use(multer({dest: './uploads/'}).single('dealImage'));
-=======
+// <<<<<<< HEAD
+// app.use(multer({dest: './uploads/'}).single('dealImage'));
+// =======
 
 
 
@@ -32,7 +33,6 @@ app.post('/uploadClientVideo',  multer({dest: './public/uploads/ClientVideosUplo
 
 
 // app.use(bodyParser.json());
->>>>>>> origin/seif_amr
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
@@ -59,7 +59,6 @@ app.use(router);
 // app.listen(9000, function(){
 //   console.log("Server is listening on port 9000");
 // =======
-
 app.listen(8080, function() {
     console.log("Server is listening on port 8080");
 })

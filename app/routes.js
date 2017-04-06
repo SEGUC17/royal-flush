@@ -1,4 +1,5 @@
 var express = require('express');
+<<<<<<< HEAD
 var router = express.Router();
 // <<<<<<< HEAD
 //
@@ -21,6 +22,7 @@ var clientController= require('./controllers/clientController');
 var userController=require('./controllers/userController');
 var dealController = require('./controllers/dealController');
 var feedbackController = require('./controllers/feedbackController');
+var administratorController= require('./controllers/administratorController');
 // Deal Routes
 router.get('/viewDeal/:deal_id', dealController.getDeal);
 router.get('/viewDeals', dealController.getAllDeals);
@@ -72,8 +74,7 @@ router.post('/viewClientEvents', client_profile_event_controller.viewClientEvent
 router.post('/updateClientEvent', client_profile_event_controller.updateClientEvent);
 router.post('/deleteClientEvent', client_profile_event_controller.deleteClientEvent);
 
-
-
->>>>>>> origin/seif_amr
+router.get("/administratorLogin", administratorController.administratorLogin);
+router.get("/viewFeedback", clientController.viewFeedback);
 
 module.exports = router;

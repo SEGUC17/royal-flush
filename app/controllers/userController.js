@@ -37,6 +37,4 @@ let userController = {
   }
 //  notifyUsers:function(req,res)
 
-
-
 module.exports = userController;

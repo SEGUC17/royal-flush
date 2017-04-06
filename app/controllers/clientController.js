@@ -1,4 +1,3 @@
-// <<<<<<< HEAD
 // let Client = require('../models/Client');
 //
 // let clientController = {
@@ -64,6 +63,7 @@ let Subscription= require('../models/Subscription');
 let Notification= require('../models/Notification');
 let Client= require('../models/Client');
 let clientEvent= require('../models/clientEvent');
+let Feedback= require('../models/feedback');
 
 let clientController ={
   collectingSubscription:function(req,res){// collecting ALL subscribed to clients and collect them for later usage
@@ -125,6 +125,25 @@ let clientController ={
     cs.push(es);
     res.render("search",cs);
   }
+
+  // viewFeedback: function(req, res){
+  //   Feedback.find({clientId: req.params.client_id}, function(err, feedbacks){
+  //     if (err) {
+  //       res.send(err.message);
+  //     }else{
+  //       res.render('feedbacks',{feedbacks});
+  //     }
+  //   })
+  // }
 }
->>>>>>> origin/seif_amr
-module.exports = clientController;
+// >>>>>>> origin/seif_amr
+// =======
+// let Client = require('../models/Client');
+// let Feedback= require('../models/feedback');
+//
+// let clientController={
+//
+// }
+//
+// >>>>>>> origin/seif2
+// module.exports = clientController;
