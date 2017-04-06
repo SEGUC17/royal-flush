@@ -1,0 +1,27 @@
+{
+  "name": "royal-flush",
+  "version": "1.0.0",
+  "description": "Entertainment Directory",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeifIhab/Royal-Flush.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeifIhab/Royal-Flush/issues"
+  },
+  "homepage": "https://github.com/SeifIhab/Royal-Flush#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "mongojs": "^2.4.0",
+    "mongoose": "^4.9.2"
+  }
+}
