@@ -1,5 +1,4 @@
 var express = require('express');
-<<<<<<< HEAD
 var router = express.Router();
 // <<<<<<< HEAD
 //
@@ -22,7 +21,9 @@ var clientController= require('./controllers/clientController');
 var userController=require('./controllers/userController');
 var dealController = require('./controllers/dealController');
 var feedbackController = require('./controllers/feedbackController');
-var administratorController= require('./controllers/administratorController');
+var administratorController= require('./controllers/administaratorController');
+var clientProfileController = require('./controllers/clientProfileController');
+var clientEventController = require('./controllers/clientEventController');
 // Deal Routes
 router.get('/viewDeal/:deal_id', dealController.getDeal);
 router.get('/viewDeals', dealController.getAllDeals);
@@ -54,25 +55,25 @@ router.get('/userUnsubscribe', userController.userUnsubscribe);
 
 // Amr's routes Added Manually
 
-router.post('/createClientProfile', client_profile_controller.createClientProfile);
-router.post('/saveClientProfile',  client_profile_controller.saveClientProfile);
+router.post('/createClientProfile', clientProfileController.createClientProfile);
+router.post('/saveClientProfile',  clientProfileController.saveClientProfile);
 
-router.post('/uploadClientFile', client_profile_controller.uploadClientFile);
-router.post('/uploadClientPicture', client_profile_controller.uploadClientPicture);
-router.post('/uploadClientVideo', client_profile_controller.uploadClientVideo);
+router.post('/uploadClientFile', clientProfileController.uploadClientFile);
+router.post('/uploadClientPicture', clientProfileController.uploadClientPicture);
+router.post('/uploadClientVideo', clientProfileController.uploadClientVideo);
 
-router.post('/updateClientProfile', client_profile_controller.updateClientProfile);
-router.post('/deleteClientProfile', client_profile_controller.deleteClientProfile);
+router.post('/updateClientProfile', clientProfileController.updateClientProfile);
+router.post('/deleteClientProfile', clientProfileController.deleteClientProfile);
 
 
-router.post('/viewClientProfile', client_profile_controller.viewClientProfile);
+router.post('/viewClientProfile', clientProfileController.viewClientProfile);
 
-router.post('/createClientEvent',  client_profile_event_controller.createClientEvent);
-router.post('/saveClientEvent', client_profile_event_controller.saveClientEvent);
-router.post('/viewClientEvents', client_profile_event_controller.viewClientEvents);
+router.post('/createClientEvent',  clientEventController.createClientEvent);
+router.post('/saveClientEvent', clientEventController.saveClientEvent);
+router.post('/viewClientEvents', clientEventController.viewClientEvents);
 
-router.post('/updateClientEvent', client_profile_event_controller.updateClientEvent);
-router.post('/deleteClientEvent', client_profile_event_controller.deleteClientEvent);
+router.post('/updateClientEvent', clientEventController.updateClientEvent);
+router.post('/deleteClientEvent', clientEventController.deleteClientEvent);
 
 router.get("/administratorLogin", administratorController.administratorLogin);
 router.get("/viewFeedback", clientController.viewFeedback);

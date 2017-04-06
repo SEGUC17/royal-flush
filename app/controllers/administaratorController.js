@@ -1,4 +1,4 @@
-let administrator = require('../models/administrator');
+let administrator = require('../models/Administrator');
 
 let administratorController={
   administratorLogin: function(req, res){

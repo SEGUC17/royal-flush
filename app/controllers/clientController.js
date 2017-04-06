@@ -63,7 +63,7 @@ let Subscription= require('../models/Subscription');
 let Notification= require('../models/Notification');
 let Client= require('../models/Client');
 let clientEvent= require('../models/clientEvent');
-let Feedback= require('../models/feedback');
+let Feedback= require('../models/Feedback');
 
 let clientController ={
   collectingSubscription:function(req,res){// collecting ALL subscribed to clients and collect them for later usage
@@ -146,4 +146,4 @@ let clientController ={
 // }
 //
 // >>>>>>> origin/seif2
-// module.exports = clientController;
+module.exports = clientController;

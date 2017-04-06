@@ -2,7 +2,7 @@ let clientProfile = require('../models/clientProfile');
 let clientPicture = require('../models/clientPictures');
 let clientVideo = require('../models/clientVideos');
 
-let client_profile_controller = { // the name of the client should be saved in a session to use it to save  pictures or video uploaded by the client
+let clientProfileController = { // the name of the client should be saved in a session to use it to save  pictures or video uploaded by the client
 
         createClientProfile:function(req, res){
 
@@ -252,4 +252,4 @@ let client_profile_controller = { // the name of the client should be saved in a
 
 }
 
-module.exports = client_profile_controller;
+module.exports = clientProfileController;

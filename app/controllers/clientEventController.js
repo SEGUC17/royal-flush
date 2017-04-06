@@ -1,6 +1,6 @@
 let clientEvent = require('../models/clientEvent');
 
-let client_event_controller = { // the name of the client should be saved in a session to use it to save data to the database
+let clientEventController = { // the name of the client should be saved in a session to use it to save data to the database
 
   createClientEvent:function(req, res){
 
@@ -136,4 +136,4 @@ deleteClientEvent:function(req, res){
 
 }
 
-module.exports = client_event_controller;
+module.exports = clientEventController;
