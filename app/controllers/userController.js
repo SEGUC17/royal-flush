@@ -6,11 +6,11 @@ let Notification= require('../models/Notification');
 let userController = {
   // Add user methods
   userSubscribeToClient:function(req,res){
-    Client.findOne({client.Id: req.body.clientId}, function(err, client){
+    Client.findOne({_id: req.body.clientId}, function(err, client){
       if(err){
         res.send('Client Error try again later');
-      }else{
-        let subscription = new Subscription({"clientId": req.body.clientId,"userId": req.session.user.Id});
+      }else if (client){
+        let subscription = new Subscription({"clientId": req.body.clientId,"userId": req.params.user_id});
         user.save(function(err, subscription){
           if(err){
             let errMessage="error occured when subscribing ";
@@ -19,15 +19,17 @@ let userController = {
             res.redirect("/subscribed");
           }
         });
+      }else{
+        res.send('error');
       }
     });
 
   },
     userUnsubscribe:function(req,res){
-      Subscription.remove({"clientId": req.body.userId,"userId": req.session.user.Id});
+      Subscription.remove({"clientId": req.body.userId,"userId": req.params.user_id});
       res.redirect('/userUnsubscribe');
     }
-  },
+  }
 //  notifyUsers:function(req,res)
 
 

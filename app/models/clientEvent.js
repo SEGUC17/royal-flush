@@ -8,5 +8,5 @@ var clientEventSchema= mongoose.Schema({
 
 })
 
-var clientEvent= mongoose.model("clientEvent", clientEventSchemaeventSchema);
+var clientEvent= mongoose.model("clientEvent", clientEventSchema);
 module.exports=clientEvent;

@@ -1,12 +1,12 @@
 let Subscription= require('../models/Subscription');
 let Notification= require('../models/Notification');
-let Client= require('../models/Clients');
+let Client= require('../models/Client');
 let clientEvent= require('../models/clientEvent');
 
 let clientController ={
   collectingSubscription:function(req,res){
     let subscriptions;
-    Subscription.find({"clientId":req.session.clientId},function(err,subscriptions){
+    Subscription.find({_id:req.params.client_id},function(err,subscriptions){
       if(err){
         res.send(err.message);
       }else{
