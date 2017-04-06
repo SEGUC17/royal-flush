@@ -21,7 +21,7 @@ module.exports = function(passport) {
     // LOCAL SIGNUP
 
     passport.use('local-signup', new LocalStrategy({
-
+//we use variables already deafined in local strategy but we set username as an email
         usernameField : 'email',
         passwordField : 'password',
         passReqToCallback : true
@@ -32,19 +32,21 @@ module.exports = function(passport) {
 
       //check if the user already exist
         User.findOne({ 'local.email' :  email }, function(err, user) {
+//find user with the same entred email
 
-            if (err)
+            if (err)//if err return error
                 return done(err);
-            if (user) {
+            if (user) {//if we have user with the same email
                 return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
-            } else {
+            } else {//registered as a new user
+
 
                 var new_user = new User();
 
                 new_user.local.email    = email;
                 new_user.local.password = new_user.generateHash(password);
                   // console.log(passport.session.email);
-                new_user.save(function(err) {
+                new_user.save(function(err) {{//save it in the data base
                     if (err)
                         throw err;
                     return done(null, new_user);
@@ -57,7 +59,7 @@ module.exports = function(passport) {
     // LOCAL LOGIN
 
     passport.use('local-login', new LocalStrategy({
-
+  //we use variables already deafined in local strategy but we set username as an email
         usernameField : 'email',
         passwordField : 'password',
         passReqToCallback : true
@@ -67,14 +69,14 @@ module.exports = function(passport) {
       //check if the user axists
         User.findOne({ 'local.email' :  email }, function(err, user) {
 
-            if (err)
+            if (err)//if err return error
                 return done(err);
 
-            if (!user)
+            if (!user)//if we didn't find a user with the entered username or email
                 return done(null, false, req.flash('loginMessage', 'You are not found'));
 
 
-            if (!user.validPassword(password))
+            if (!user.validPassword(password))//we valied the password if we find the email through predefined method
                 return done(null, false, req.flash('loginMessage', ' Wrong password'));
 
 
