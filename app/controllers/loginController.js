@@ -16,6 +16,7 @@ let SignUpController = {
   register:function(req, res){
       res.render('register');
   },
+  //redirect to login page it is not a registered user in the database
   loginmenu:function(req,res){
     var correctuser = true;
     var registered = false;
@@ -24,10 +25,11 @@ let SignUpController = {
 
 
 
-
+//login as an admin by searching for his current username in the database of adminstrators, if login
+ // is successful render to his home page else stay in the same page. 
   login:function(req,res){
     var correctuser = false;
-    Registrations.findOne({username:req.body.username, password:req.body.password},function(err,reg){
+    Adminstrator.findOne({username:req.body.username, password:req.body.password},function(err,reg){
       if(err){
       console.log(err);
     }else{
@@ -38,7 +40,7 @@ let SignUpController = {
       loggedin = true;
       usrname = req.body.username;
       pass = req.body.password;
-      hasPortfolio = reg.hasPortfolio;
+    //  hasPortfolio = reg.hasPortfolio;
     res.redirect('/');
   }
   }
@@ -46,23 +48,18 @@ let SignUpController = {
     })
 
   },
+  //function to view the feedbacks of users
   viewFeedback:function(req,res){
-    if(req.body.user!= undefined){
-    user = req.body.user;
-    curuser = req.body.curuser;
-    console.log(user);
-    if(user == curuser){
-      isOwner = true;
-    }else{
-      isOwner = false;
-    }
-  }
+   
+  //Adminstrator navigate through feedbacks using his own username
     Administrator.findOne({username:user},function(err,reg){
       if(err){
         console.log(err);
       }else{
         if(reg){
         console.log(usrname);
+   //displaying the  feedbacks by their usernames, to open one click on the username of the username's feedback
+   //done for front-end implemntation wise.       
         Feedback.find({username:user},function(err,work){
           if(err){
             console.log(err);
@@ -72,7 +69,7 @@ let SignUpController = {
             }else{
               console.log('work');
 
-              res.render('Portfolio', {reg, work, isOwner});
+              res.render('Feedbacks', {reg, work, isOwner});
         }
           }
         })
@@ -84,6 +81,7 @@ let SignUpController = {
 
 
   },
+  //method for logout of the website.
   logout:function(req,res){
     loggedin = false;
     res.redirect('/');
