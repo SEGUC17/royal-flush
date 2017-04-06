@@ -8,7 +8,7 @@ var reservationController = require('./controllers/reservationController');
 // Deal Routes
 router.get('/viewDeal/:deal_id', dealController.getDeal);
 router.get('/viewDeals', dealController.getAllDeals);
-router.get('/viewAllClientDeals', dealController.getAllClientDeals);
+router.get('/viewAllClientDeals/:client_id', dealController.getAllClientDeals);
 router.get('/addNewDeal', dealController.addNewDeal); // Should change to post when frontend is added
 router.get('/deleteAllDeals', dealController.deleteAllDeals);
 router.get('/deleteDeal/:deal_id', dealController.deleteDeal);
@@ -26,7 +26,7 @@ router.get('/deleteAllFeedbacks', feedbackController.deleteAllFeedbacks);
 router.get('/deleteFeedback/:feedback_id', feedbackController.deleteFeedback);
 router.get('/updateFeedback/:feedback_id', feedbackController.updateFeedback); // Should change to post when frontend is added
 // Client Routes
-router.get('/getAllClients', clientController.getAllClients);
+router.get('/viewClients', clientController.getAllClients);
 router.get('/addNewClient', clientController.addNewClient);
 router.get('/getCategoryClients/:category', clientController.getCategoryClients)
 // Reservation Routes

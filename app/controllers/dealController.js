@@ -15,7 +15,7 @@ let dealController = {
   },
 // Get Client specific deals using client_id
   getAllClientDeals:function(req, res){
-    var client_id = 1; // This should change with session value
+    var client_id = req.params.client_id; // This should change with session value
     Deal.find({client_id:client_id}, function(err, deals){
       if(err){
         res.send(err.message);
