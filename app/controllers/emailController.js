@@ -2,7 +2,7 @@
 
 let EmailController = {
 
-function sendEmail ( _name, _email, _subject, _message) {
+sendEmail: function( _name, _email, _subject, _message) { //email function(to send an email)
     mandrill('/messages/send', {
         message: {
             to: [{email: _email , name: _name}],
@@ -17,7 +17,7 @@ function sendEmail ( _name, _email, _subject, _message) {
 }
 
 
-function VerificationEmail(req,res){
+VerificationEmail: function(req,res){ 
 
     var _name = req.body.name;
     var _email = req.body.email;
@@ -29,7 +29,7 @@ function VerificationEmail(req,res){
     sendEmail ( _name, _email, _subject, _message );
 }
 
-function RejectionEmail(req,res){
+RejectionEmail: function(req,res){ //send rejection email
 
     var _name = req.body.name;
     var _email = req.body.email;

@@ -1,6 +1,6 @@
 let verifyClientController = {
 
-function ViewUnverifiedClients(req,res,next){
+ViewUnverifiedClients:function(req,res,next){ //view all unverifies clients
 						var resultArray = [];
 						mongo.connect(url,function(err,db){
 							assert.equal(null,err);
@@ -19,7 +19,7 @@ function ViewUnverifiedClients(req,res,next){
 
 
 
-function ViewClient(req, res, next){
+ViewClient:function(req, res, next){ //view a single client to see his profile
 
 sess=req.session;
 var email2 = req.query.email;
@@ -42,7 +42,7 @@ Client.findOne({email : email2}, function(err, client2){
 }
 
 
-function verifyClient(req,res){
+verifyClient: function(req,res){ //verify and send email
 
 	sess=req.session;
 	var email2 = req.query.email;
@@ -51,7 +51,7 @@ function verifyClient(req,res){
 	VerificationEmail(req,res);
 	//db.Client.remove({x});
 }
-function rejectClient(req,res){
+rejectClient: function(req,res){//reject and send email
 
 	sess=req.session;
 	var email2 = req.query.email;
