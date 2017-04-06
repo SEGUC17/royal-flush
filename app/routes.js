@@ -1,16 +1,18 @@
-// Dependencies
-
 var express = require('express');
 var router = express.Router();
-var client_profile_controller = require('./controllers/clientProfileController');
-var client_profile_event_controller = require('./controllers/clientEventController');
-
-
-
-
-
+var clientController= require('./controllers/clientController');
+var userController=require('./controllers/userController');
 
 //Add routes here
+router.get('/collectingSubscription',clientController.collectingSubscription);
+router.get('/getAllClients',clientController.getAllClients);
+router.get('/searchForClients',clientController.searchForClients);
+router.get('/userSubscribeToClient',userController.userSubscribeToClient);
+router.get('/userUnsubscribe', userController.userUnsubscribe);
+
+// Amr's routes Added Manually
+
+
 router.post('/createClientProfile', client_profile_controller.createClientProfile);
 router.post('/saveClientProfile',  client_profile_controller.saveClientProfile);
 
@@ -34,13 +36,4 @@ router.post('/deleteClientEvent', client_profile_event_controller.deleteClientEv
 
 
 
-
-
-
-
-
-
-
-
-//Export
 module.exports = router;

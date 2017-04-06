@@ -1,3 +1,5 @@
+// Added manually form Amr's model
+
 var mongoose= require('mongoose');
 
 var client_event_schema= mongoose.Schema({
