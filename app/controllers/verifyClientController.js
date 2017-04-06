@@ -1,4 +1,4 @@
-let varifyClientsController = {
+let verifyClientController = {
 
 function ViewUnverifiedClients(req,res,next){
 						var resultArray = [];
@@ -13,7 +13,7 @@ function ViewUnverifiedClients(req,res,next){
 							res.render('/verifyClients', {items: resultArray});
 							}); 
 										});
-												};
+												}
 
 
 
@@ -39,7 +39,7 @@ Client.findOne({email : email2}, function(err, client2){
 
 });
 
-};
+}
 
 
 function verifyClient(req,res){

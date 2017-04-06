@@ -6,7 +6,7 @@ function sendEmail ( _name, _email, _subject, _message) {
     mandrill('/messages/send', {
         message: {
             to: [{email: _email , name: _name}],
-            from_email: 'noreply@yourdomain.com',
+            from_email: 'hassanelkoussy@gmail.com',
             subject: _subject,
             text: _message
         }
