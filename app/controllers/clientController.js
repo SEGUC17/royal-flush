@@ -15,7 +15,7 @@ let clientController ={
       }
     })
     for (var i = 0; i < subscriptions.length; i++) {
-      let notification = new Notification ({"clientId": subscriptions[i].clientId, "userId": subscriptions[i].userId, "viewed": false; "message": "new event created by "+req.session.name});
+      let notification = new Notification ({"clientId": subscriptions[i].clientId, "userId": subscriptions[i].userId, "viewed": false, "message": "new event created by "+req.session.name});
       notification.save(function(err, notification){
         if(err){
           res.send(err.message);
@@ -23,7 +23,7 @@ let clientController ={
           res.redirect('/clientProfile');
         }
       })
-    },
+    }
 },
   getAllClients:function(req, res){
     Client.find(function(err, clients){
@@ -39,7 +39,7 @@ let clientController ={
     let cs;
 
     let searchKey = req.body.searchKey ;
-    Client.find({"name":searchKey||"address":searchKey}, function(err, clients){
+    Client.find({ name : searchKey }, function(err, clients){
       if(err){
         res.send("error with search");
 
@@ -47,7 +47,7 @@ let clientController ={
         cs={clients};
       }
     });
-    clientEvent .find({"eventName":searchKey||"startingDate":searchKey || "endDate": searchKey }, function(err, clientEvents){
+    clientEvent .find({eventName:searchKey} , function(err, clientEvents){
       if(err){
         res.send("error with search");
 

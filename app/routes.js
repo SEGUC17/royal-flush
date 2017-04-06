@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var clientController= require('./models/clientController');
-var userController=require('./models/userController');
+var clientController= require('./controllers/clientController');
+var userController=require('./controllers/userController');
 
 //Add routes here
 router.get('/collectingSubscription',clientController.collectingSubscription);
