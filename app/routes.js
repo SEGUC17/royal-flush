@@ -10,7 +10,7 @@ var client_profile_event_controller = require('./controllers/clientEventControll
 
 
 
-//Add routes
+//Add routes here
 router.post('/createClientProfile', client_profile_controller.createClientProfile);
 router.post('/saveClientProfile',  client_profile_controller.saveClientProfile);
 
