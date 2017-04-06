@@ -1,6 +1,6 @@
 
 
-let EmailController = {
+let emailController = {
 
 sendEmail: function( _name, _email, _subject, _message) { //email function(to send an email)
     mandrill('/messages/send', {
