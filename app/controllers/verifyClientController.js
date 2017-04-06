@@ -28,7 +28,7 @@ Client.findOne({email : email2}, function(err, client2){
 
 
 
-    Client_profile.find({Client_profile.email : email2}, function(err, Client_profile2){
+    Client_profile.find({email : email2}, function(err, Client_profile2){
 
 
         if(sess.student){
