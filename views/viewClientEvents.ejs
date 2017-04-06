@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Create Client Profile</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    <form class="" action="/viewClientProfile" method="post">
+
+        <input type="submit" name="submit" value="view client profile">
+
+    </form>
+    <br><br>
+
+    <% for(var i=0; i<events.length; i++){%>
+      <p>client name: <%= events[i].clientName %></p>
+      <p>event name: <%= events[i].eventName %></p>
+      <p>starting date: <%= events[i].startingDate %></p>
+      <p>ending date: <%= events[i].endingDate %></p>
+      <p>price: <%= events[i].price %></p><br><br>
+  <% } %>
+<br>
+
+  </body>
+</html>
