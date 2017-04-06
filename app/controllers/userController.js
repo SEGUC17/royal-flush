@@ -30,7 +30,7 @@ let userController = {
 
   },
     userUnsubscribe:function(req,res){
-      //removal of subscription from memory 
+      //removal of subscription from memory
       Subscription.remove({"clientId": req.body.userId,"userId": req.params.user_id});
       res.redirect('/userUnsubscribe');
     }
