@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 
 var reservationSchema = mongoose.Schema({
-    eventId: {
+
+    eventName: {
         type: String,
         required: true
     },
@@ -13,10 +14,14 @@ var reservationSchema = mongoose.Schema({
         type: String,
         required: true
     },
+
+    // Making sure that the user agrees to the refund policy of the client
     acceptsRefundPolicy: {
         type: Boolean,
         required: true
     },
+
+    // A variable that makes sure that the reservation wasn't cancelled by user
     cancelled: {
         type: Boolean,
         required: true,
