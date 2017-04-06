@@ -2,6 +2,8 @@
 module.exports = function(app, passport) {
 
 
+
+//get the root page
     app.get('/', function(req, res) {
         res.render('index.ejs');
     });
@@ -11,6 +13,7 @@ module.exports = function(app, passport) {
 
         res.render('login.ejs', { message: req.flash('loginMessage') });
     });
+    //use the passport session withe post
 
     app.post('/login', passport.authenticate('local-login', {
      successRedirect : '/profile',
@@ -25,13 +28,14 @@ module.exports = function(app, passport) {
         res.render('signup.ejs', { message: req.flash('signup complete !') });
     });
 
-
+//use the passport session withe post
     app.post('/signup', passport.authenticate('local-signup', {
     successRedirect : '/profile',
     failureRedirect : '/signup',
     failureFlash : true
 }));
 
+//show the data of the user
 
     app.get('/profile', isLoggedIn, function(req, res) {
         res.render('profile.ejs', {
@@ -46,7 +50,7 @@ module.exports = function(app, passport) {
     });
 };
 
-
+// check the user logged in
 function isLoggedIn(req, res, next) {
 
 
