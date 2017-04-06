@@ -2,17 +2,17 @@ var express = require('express');
 var router = express.Router();
 var verifyClientController = require('./controllers/verifyClientController');
 var emailController = require('./controllers/emailController');
-var mandrill = require('node-mandrill')('AIzaSyATF9snxRM9NRydzxDnZvO9JMVS1fePrXA'); 
+var mandrill = require('node-mandrill')('AIzaSyATF9snxRM9NRydzxDnZvO9JMVS1fePrXA');                 ///////////////// !!!!!!!!!!!!!!!!!!!!!!!!!!!! ignore
 //Add routes here
 
-router.get('/varifyClients',verifyClientController.ViewUnverifiedClients);
+router.get('/varifyClients',verifyClientController.viewUnverifiedClients);
 
-router.get('/ViewClient',verifyClientController.ViewClient);
+router.get('/viewClient',verifyClientController.viewClient);
 
-router.post( '/api/sendemail/',emailController.VerificationEmail);
+router.post( '/api/sendemail/',emailController.verificationEmail);
 
-router.post( '/api/sendemail/',emailController.RejectionEmail);
+router.post( '/api/sendemail/',emailController.rejectionEmail);
 
-router.post('/ViewClient',verifyClientsController.verifyClient);
+//router.post('/ViewClient',verifyClientController.viewClient);
 
 module.exports = router;
