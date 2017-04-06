@@ -13,7 +13,7 @@ ViewUnverifiedClients:function(req,res,next){ //view all unverifies clients
 							res.render('/verifyClients', {items: resultArray});
 							}); 
 										});
-												}
+												},
 
 
 
@@ -39,7 +39,7 @@ Client.findOne({email : email2}, function(err, client2){
 
 });
 
-}
+},
 
 
 verifyClient: function(req,res){ //verify and send email
@@ -50,7 +50,8 @@ verifyClient: function(req,res){ //verify and send email
 	x.varified = true;
 	VerificationEmail(req,res);
 	//db.Client.remove({x});
-}
+},
+
 rejectClient: function(req,res){//reject and send email
 
 	sess=req.session;

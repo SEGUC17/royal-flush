@@ -14,7 +14,7 @@ sendEmail: function( _name, _email, _subject, _message) { //email function(to se
         if (error) console.log( error );
         else console.log(response);
     });
-}
+},
 
 
 VerificationEmail: function(req,res){ 
@@ -27,7 +27,7 @@ VerificationEmail: function(req,res){
     //implement your spam protection or checks. 
 
     sendEmail ( _name, _email, _subject, _message );
-}
+},
 
 RejectionEmail: function(req,res){ //send rejection email
 
