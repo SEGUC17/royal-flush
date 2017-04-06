@@ -1,4 +1,4 @@
-var mongoose = requrie('mongoose');
+var mongoose = require('mongoose');
 
 var clientSchema= mongoose.Schema({
   //Client schema
