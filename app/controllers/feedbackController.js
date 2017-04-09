@@ -38,8 +38,8 @@ let feedbackController = {
   addNewFeedback:function(req, res){
     // var user_id = 1; // This should change with session value
     req.body.client_id = req.params.client_id;
-    req.body.body = "This is a body";
-    req.body.user_id = "1"; // Session value
+    // req.body.body = "This is a body";
+    // req.body.user_id = "1"; // Session value
 
     let feedback = new Feedback(req.body);
     feedback.save(function(err, feedback){
