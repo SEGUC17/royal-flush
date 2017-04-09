@@ -14,7 +14,7 @@ var administratorSchema=mongoose.Schema({
     type:String,
     requied: true
   }
-  
+
 })
 
 var Administrator= mongoose.model("administrator",administratorSchema);

@@ -35,11 +35,11 @@ var clientSchema= mongoose.Schema({
     default:0
   },
   start_hour:{
-    type:String,
+    type:Date,
     required:true
   },
   end_hour:{
-    type:String,
+    type:Date,
     required:true
   },
   working_days:{

@@ -13,8 +13,6 @@ let administratorController={
       }
     })
   }
-
-
 }
 
 module.exports = administratorController;

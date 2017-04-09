@@ -246,7 +246,7 @@ let clientProfileController = { // the name of the client should be saved in a s
                 console.log("Client profile removed!");
           }
     });
-  },
+  }
 
 
 

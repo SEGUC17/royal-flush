@@ -76,7 +76,7 @@ let clientController ={
         res.return(subscriptions);
       //  res.redirect('/notifyUsers',{subscriptions});
       }
-    })
+    });
   /*  for (var i = 0; i < subscriptions.length; i++) {
       let notification = new Notification ({"clientId": subscriptions[i].clientId, "userId": subscriptions[i].userId, "viewed": false, "message": "new event created by "+req.session.name});
       notification.save(function(err, notification){
@@ -95,7 +95,7 @@ let clientController ={
       }else{
         res.render('hompage',{clients});
       }
-    })
+    });
   },
   searchForClients:function(req, res){// search function byy client name and event name
     let es; // collection of events (temprory)

@@ -129,7 +129,7 @@ let dealController = {
       else{
         res.json("Deleted");
       }
-    })
+    });
   },
 // Update deal's information
   updateDeal:function(req, res){
