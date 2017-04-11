@@ -1,6 +1,6 @@
 //rawan
 var mongoose = require ('mongoose');
-var clientSchema = mongoose.schema({
+var clientSchema = mongoose.Schema({
 username:{
 type: String,
 required: true,
@@ -37,6 +37,6 @@ phone:{
 },
 verified: Boolean
 
-});
+})
 var client = mongoose.model("client",clientSchema);
-module.exports = Client;
+module.exports = client;
