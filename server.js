@@ -4,7 +4,7 @@ var app      = express();
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
-//var router  = require('./app/routes.js')
+var router  = require('./app/routes.js');
 
 // var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -33,7 +33,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 require('./app/userroutes.js')(app, passport); // load our routes and pass in our app and fully configured passp
 
 mongoose.connect(DB_URI);
-// app.use(router);
+app.use(router);
 
 app.listen(8080, function(){
   console.log("Server is listening on port 8080");

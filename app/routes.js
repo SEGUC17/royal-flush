@@ -24,11 +24,12 @@ var feedbackController = require('./controllers/feedbackController');
 var administratorController= require('./controllers/administaratorController');
 var clientProfileController = require('./controllers/clientProfileController');
 var clientEventController = require('./controllers/clientEventController');
+
 // Deal Routes
 router.get('/viewDeal/:deal_id', dealController.getDeal);
 router.get('/viewDeals', dealController.getAllDeals);
 router.get('/viewAllClientDeals/:client_id', dealController.getAllClientDeals);
-router.get('/addNewDeal', dealController.addNewDeal); // Should change to post when frontend is added
+router.post('/addNewDeal', dealController.addNewDeal); // Should change to post when frontend is added
 router.get('/deleteAllDeals', dealController.deleteAllDeals);
 router.get('/deleteDeal/:deal_id', dealController.deleteDeal);
 router.get('/updateDeal/:deal_id', dealController.updateDeal); // Should change to post when frontend is added
@@ -41,7 +42,7 @@ router.get('/viewTodayDeals', dealController.getTodayDeals);
 router.get('/viewFeedback/:feedback_id', feedbackController.getFeedback);
 router.get('/viewFeedbacks', feedbackController.getAllFeedbacks);
 router.get('/viewAllClientFeedbacks/:client_id', feedbackController.getAllClientFeedbacks);
-router.get('/addNewFeedback/:client_id', feedbackController.addNewFeedback); // Should change to post when frontend is added
+router.post('/addNewFeedback/:client_id', feedbackController.addNewFeedback); // Should change to post when frontend is added
 router.get('/deleteAllFeedbacks', feedbackController.deleteAllFeedbacks);
 router.get('/deleteFeedback/:feedback_id', feedbackController.deleteFeedback);
 router.get('/updateFeedback/:feedback_id', feedbackController.updateFeedback); // Should change to post when frontend is added
@@ -76,6 +77,6 @@ router.post('/updateClientEvent', clientEventController.updateClientEvent);
 router.post('/deleteClientEvent', clientEventController.deleteClientEvent);
 
 router.get("/administratorLogin", administratorController.administratorLogin);
-router.get("/viewFeedback", clientController.viewFeedback);
+// router.get("/viewFeedback", clientController.viewFeedback);
 
 module.exports = router;
