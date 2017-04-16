@@ -1,0 +1,23 @@
+<h1>User Profile</h1>
+<div class="container">
+  <h4 class="card-title">{{user.name}}</h4>
+  <h4 class="card-title">{{user.email}}</h4>
+  <div class="row" *ngFor="let subscription of subscriptions">
+    <div class="card card-block">
+      <h4 class="card-title"><b>subscription</b></h4>
+      <p class="card-text"><b>client name</b> {{subscription.name}}</p>
+      <p class="card-text"><b>email</b> {{subscription.email}}</p>
+      <p class="card-text"><b>category</b> {{subscription.category}}</p>
+    </div>
+  </div>
+
+  <div class="row" *ngFor="let reservation of reservations">
+    <div class="card card-block">
+      <h4 class="card-title"><b>reservation</b></h4>
+      <p class="card-text"><b>client name</b> {{reservation.name}}</p>
+      <p class="card-text"><b>email</b> {{reservation.email}}</p>
+      <p class="card-text"><b>category</b> {{reservation.category}}</p>
+      <p class="card-text"><b>booked_date_time</b> {{reservation.booked_date_time}}</p>
+    </div>
+  </div>
+</div>
