@@ -8,9 +8,6 @@ var mongoose = require('mongoose');
 var session = require('client-sessions');
 var DB_URI = "mongodb://localhost:27017/db";
 
-/////
-var client_profile_controller = require('./app/controllers/clientProfileController');
-/////
 
 
 var app = express();
@@ -20,10 +17,6 @@ app.set('view engine', 'ejs');
 
 
 
-///////// multer
-app.post('/uploadClientPicture',  multer({dest: './public/uploads/ClientPicturesUploads/'}).single('myImage'), client_profile_controller.uploadClientPicture); // uploads video using multer to destination then calls picture method
-app.post('/uploadClientVideo',  multer({dest: './public/uploads/ClientVideosUploads/'}).single('myVideo'), client_profile_controller.uploadClientVideo);     // uploads video  using multer to destination then calls video method
-////////
 // configure app
 
 
