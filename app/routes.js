@@ -1,9 +1,14 @@
 var express = require('express');
-var router = express.Router();
+//var router = express.Router();
 
 //Add routes here
 
 module.exports = function(app, passport) {
+
+
+	// =====================================
+	// HOME PAGE (with login links) ========
+	// =====================================
 
     // route for home page
     app.get('/', function(req, res) {
@@ -71,15 +76,16 @@ module.exports = function(app, passport) {
 
 };
 
-// route middleware to make sure a user is logged in
+// route middleware to make sure
 function isLoggedIn(req, res, next) {
 
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
+	// if user is authenticated in the session, carry on
+	if (req.isAuthenticated())
+		return next();
 
-    // if they aren't redirect them to the home page
-    res.redirect('/');
+	// if they aren't redirect them to the home page
+	res.redirect('/');
 }
 
-module.exports = router;
+
+//module.exports = router;

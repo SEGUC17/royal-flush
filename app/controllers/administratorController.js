@@ -3,6 +3,7 @@ let Administrator = require('../models/Client');
 let administratorController = {
 
 
+
   getAllUnverifiedClients:function(req, res){
 
       Client.find({verified:false},{name:true, verified:true},null,function(err,cients){
@@ -13,6 +14,8 @@ let administratorController = {
               res.render('index', {clients});
       })
  }
+
+
 }
 
 
