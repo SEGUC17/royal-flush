@@ -1,27 +1,146 @@
 <h1> Chilling?</h1>
 <p class="lead">Use the ..&Chill app to find your next adventure!</p>
 
-<form (submit)="search()">
-  <div class="form-group">
-    <input class="form-control" type="text" placeholder="Find your next adventure.." [(ngModel)]="searchKey" name="searchKey">
-  </div>
-</form>
+<div *ngIf="clientSearch; else elseBlock">
 
-<div *ngIf="searchRes">
-  <div *ngFor="let result of searchRes">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="search-res well">
-          <h4> {{result.name}} </h4>
-          <h6>Category: {{result.category}} </h6>
-          <h6>Address: {{result.address}} </h6>
-          <h6>Working hours: {{result.start_hour}}-{{result.end_hour}} </h6>
-          <h6>Working days: {{result.working_days}} </h6>
+  <form>
+    <div class="form-group">
+      <input class="form-control" type="text" placeholder="Find your next adventure.." [(ngModel)]="searchKey" name="searchKey"
+        (keyup)="searchClients()">
+    </div>
+  </form>
+</div>
+<ng-template #elseBlock>
+  <form>
+    <div class="form-group">
+      <input class="form-control" type="text" placeholder="Find your next adventure.." [(ngModel)]="searchKey" name="searchKey"
+        (keyup)="searchEvents()">
+    </div>
+  </form>
+</ng-template>
 
-          <div>
+
+<md-tab-group md-stretch-tabs (selectChange)="onLinkClick($event)">
+  <md-tab>
+    <ng-template md-tab-label>
+      <h4>Clients</h4>
+    </ng-template>
+    <md-grid-list cols="2" rowHeight="20px">
+      <md-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightblue'">
+        <!--<h2>Filter by Location</h2>-->
+        <form>
+          <md-select placeholder="Location" [(ngModel)]="locationTerm" name="locationTerm" ngDefaultControl>
+            <md-option [value]="">All Locations</md-option>
+            <md-option [value]="'New Cairo'">New Cairo</md-option>
+            <md-option [value]="'Nasr City'">Nasr City</md-option>
+            <md-option [value]="'Henak'">New Cairo</md-option>
+
+          </md-select>
+        </form>
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightblue'">
+
+        <form>
+          <md-select placeholder="Category" [(ngModel)]="categoryTerm" name="categoryTerm" ngDefaultControl>
+            <md-option [value]="">All Categories</md-option>
+            <md-option [value]="'Fun stuff'">Fun stuff</md-option>
+            <md-option [value]="'Good stuff'">Good stuff</md-option>
+            <md-option [value]="'Nice stuff'">Nice stuff</md-option>
+
+          </md-select>
+        </form>
+      </md-grid-tile>
+    </md-grid-list>
+  </md-tab>
+  <md-tab>
+    <ng-template md-tab-label>
+      <h4>Events</h4>
+      <md-icon md-font-set="material-icons">thumb_down</md-icon>
+    </ng-template>
+    <md-grid-list cols="3" rowHeight="50px">
+      <md-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightblue'">
+        <form>
+          <md-select placeholder="Location" [(ngModel)]="locationTerm" name="locationTerm" ngDefaultControl>
+            <md-option [value]="">All Locations</md-option>
+            <md-option [value]="'New Cairo'">New Cairo</md-option>
+            <md-option [value]="'Nasr City'">Nasr City</md-option>
+            <md-option [value]="'Henak'">New Cairo</md-option>
+
+          </md-select>
+        </form>
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightblue'">
+
+        <md-slider class="example-margin" [max]="1000" [min]="0" [step]="50" [thumb-label]="true" [tick-interval]="true" [value]="0">
+        </md-slider>
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightblue'">
+
+        <form>
+          <md-select placeholder="Category" [(ngModel)]="categoryTerm" name="categoryTerm" ngDefaultControl>
+            <md-option [value]="">All Categories</md-option>
+            <md-option [value]="'Fun stuff'">Fun stuff</md-option>
+            <md-option [value]="'Good stuff'">Good stuff</md-option>
+            <md-option [value]="'Nice stuff'">Nice stuff</md-option>
+
+          </md-select>
+        </form>
+      </md-grid-tile>
+    </md-grid-list>
+  </md-tab>
+</md-tab-group>
+
+<!--<select [(ngModel)]="term" name="term" class="btn btn-default dropdown-toggle">
+    <option [selected]="term == 'New Cairo'">New Cairo</option>
+    <option [selected]="term == 'Nasr City'">Nasr City</option>
+    <option [selected]="term == 'New Cairo'">New Cairo</option>
+   
+  </select>
+</div>-->
+
+
+<!--<form id="filter">
+  <label>Filter clients by location</label>
+  <input type="text" [(ngModel)]="term" name="term"/>
+  </form>-->
+<div *ngIf="clientSearch; else else2Block">
+
+  <div *ngIf="searchRes">
+    <div *ngFor="let result of searchRes | location:locationTerm | category:categoryTerm">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="search-res well">
+            <h4> {{result.name}} </h4>
+            <h6>Category: {{result.category}} </h6>
+            <h6>Address: {{result.address}} </h6>
+            <h6>Working hours: {{result.start_hour}}-{{result.end_hour}} </h6>
+            <h6>Working days: {{result.working_days}} </h6>
+
+            <div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<ng-template #else2Block>
+  <div *ngIf="searchRes">
+    <div *ngFor="let result of searchRes | location:locationTerm | category:categoryTerm">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="search-res well">
+            <h4> {{result.eventName}} </h4>
+            <h6>Provider: {{result.clientName}} </h6>
+            <h6>Location: {{result.location}} </h6>
+            <h6>Running thru: {{result.startingDate}}-{{result.endingDate}} </h6>
+            <h6>Price: {{result.price}} </h6>
+
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

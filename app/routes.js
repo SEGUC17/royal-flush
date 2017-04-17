@@ -77,6 +77,7 @@ router.post('/viewClientProfile', clientProfileController.viewClientProfile);
 router.post('/createClientEvent',  clientEventController.createClientEvent);
 router.post('/saveClientEvent', clientEventController.saveClientEvent);
 router.post('/viewClientEvents', clientEventController.viewClientEvents);
+router.post('/searchForClientEventByName',clientEventController.searchForClientEventByName);
 
 router.post('/updateClientEvent', clientEventController.updateClientEvent);
 router.post('/deleteClientEvent', clientEventController.deleteClientEvent);

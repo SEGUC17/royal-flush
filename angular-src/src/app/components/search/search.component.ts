@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class SearchComponent implements OnInit {
   searchKey: any;
   searchRes: Object[];
+  clientSearch: boolean = true;
   private sub: any;
   constructor(
     private router: Router,
@@ -18,6 +19,13 @@ export class SearchComponent implements OnInit {
 
   ) { }
 
+  selectedValue: string;
+
+  foods = [
+    { value: 'steak-0', viewValue: 'Steak' },
+    { value: 'pizza-1', viewValue: 'Pizza' },
+    { value: 'tacos-2', viewValue: 'Tacos' }
+  ];
   ngOnInit() {
     // console.log(this.route.snapshot.params['searchKey']);
 
@@ -29,16 +37,28 @@ export class SearchComponent implements OnInit {
     //       console.log(err);
     //       return false;
     //     });
-  
+
   }
 
   ngOnDestroy() {
     //  this.sub.unsubscribe();
   }
+  onLinkClick($event: any) {
+    console.log($event);
+   this.clientSearch=!this.clientSearch;
+  }
+  searchClients() {
+    //  this.searchRes = [];
+    this.searchService.searchClients(this.searchKey).subscribe(res => { this.searchRes = res },
+      err => {
+        console.log(err);
+        return false;
+      });
+  }
 
-  search() {
-  //  this.searchRes = [];
-    this.searchService.search(this.searchKey).subscribe(res => { this.searchRes = res },
+  searchEvents() {
+    //  this.searchRes = [];
+    this.searchService.searchEvents(this.searchKey).subscribe(res => { this.searchRes = res },
       err => {
         console.log(err);
         return false;

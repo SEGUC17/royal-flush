@@ -10,8 +10,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import { MdButtonModule, MdCheckboxModule, MdSelectModule, MdGridListModule, MdTabsModule, MdSliderModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthService } from './services/auth.service';
@@ -23,7 +24,9 @@ import { ValidateService } from './services/validate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { CompanyComponent } from './components/company/company.component';
 import { SearchComponent } from './components/search/search.component';
-import { LocationPipe } from './location.pipe';
+import { LocationPipe } from './pipes/location.pipe';
+import { CategoryPipe } from './pipes/category.pipe';
+import { PricePipe } from './pipes/price.pipe';
 
 const appRoutes: Routes = [
 
@@ -51,7 +54,9 @@ const appRoutes: Routes = [
     ProfileComponent,
     CompanyComponent,
     SearchComponent,
-    LocationPipe
+    LocationPipe,
+    CategoryPipe,
+    PricePipe
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,14 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MdButtonModule,
+    MdCheckboxModule,
+    MdSelectModule,
+    MdGridListModule,
+    MdTabsModule,
+    MdSliderModule
   ],
   providers: [ValidateService, AuthService, AuthGuard, RetrieveService, SearchService],
   bootstrap: [AppComponent]

@@ -8,11 +8,21 @@ export class SearchService {
   private searchUrl: string;
   constructor(private http: Http) { }
   
-  search(str) {
+  searchClients(str) {
     const searchKey = {
       searchKey: str
     }
     this.searchUrl = 'http://localhost:8080/searchForClientByName';
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(this.searchUrl, searchKey, {headers:headers}).map(res => res.json());
+  }
+
+  searchEvents(str) {
+    const searchKey = {
+      searchKey: str
+    }
+    this.searchUrl = 'http://localhost:8080/searchForClientEventByName';
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post(this.searchUrl, searchKey, {headers:headers}).map(res => res.json());

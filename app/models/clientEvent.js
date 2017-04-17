@@ -1,25 +1,26 @@
-var mongoose= require('mongoose');
+var mongoose = require('mongoose');
 
-var client_event_schema= mongoose.Schema({
+var client_event_schema = mongoose.Schema({
 
-    clientName:String,
-    eventName:{type:String, required:true},
-    startingDate:{type:Date, required:true},
-    endingDate:{type:Date, required:true},
-    location:{type: String, required:true},
-    price:String
+  clientName: String,
+  eventName: { type: String, required: true },
+  startingDate: { type: Date, required: true },
+  endingDate: { type: Date, required: true },
+  location: { type: String, required: true },
+  price: String
 
 
-  },{
+}, {
     versionKey: false
 
-    });
+  });
 
-var event = mongoose.model('clientEvent', client_event_schema);
+const event = mongoose.model('clientevent', client_event_schema);
 
 module.exports = event;
 //method definition
-module.exports.findByClientName= function(clientName,callback) {
-  const query = {name:clientName};
-event.find(query, callback);
+module.exports.findByEventName = function (eventName, callback) {
+  const query = { eventName: { $regex: ".*" + eventName + ".*", $options: 'i' } };
+
+  event.find(query, callback);
 }
