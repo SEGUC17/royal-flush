@@ -1,0 +1,27 @@
+<h1> Chilling?</h1>
+<p class="lead">Use the ..&Chill app to find your next adventure!</p>
+
+<form (submit)="search()">
+  <div class="form-group">
+    <input class="form-control" type="text" placeholder="Find your next adventure.." [(ngModel)]="searchKey" name="searchKey">
+  </div>
+</form>
+
+<div *ngIf="searchRes">
+  <div *ngFor="let result of searchRes">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="search-res well">
+          <h4> {{result.name}} </h4>
+          <h6>Category: {{result.category}} </h6>
+          <h6>Address: {{result.address}} </h6>
+          <h6>Working hours: {{result.start_hour}}-{{result.end_hour}} </h6>
+          <h6>Working days: {{result.working_days}} </h6>
+
+          <div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

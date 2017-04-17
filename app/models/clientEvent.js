@@ -1,5 +1,3 @@
-// Added manually form Amr's model
-
 var mongoose= require('mongoose');
 
 var client_event_schema= mongoose.Schema({
@@ -8,7 +6,8 @@ var client_event_schema= mongoose.Schema({
     eventName:{type:String, required:true},
     startingDate:{type:Date, required:true},
     endingDate:{type:Date, required:true},
-    price:String,
+    location:{type: String, required:true},
+    price:String
 
 
   },{
@@ -16,5 +15,11 @@ var client_event_schema= mongoose.Schema({
 
     });
 
-var event = mongoose.model("clientEvent", client_event_schema);
+var event = mongoose.model('clientEvent', client_event_schema);
+
 module.exports = event;
+//method definition
+module.exports.findByClientName= function(clientName,callback) {
+  const query = {name:clientName};
+event.find(query, callback);
+}

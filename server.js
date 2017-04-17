@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
 var router  = require('./app/routes.js');
+const cors = require('cors');
 
 // var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -15,10 +16,11 @@ var config =require('./app/controllers/userPassport')(passport);
 var DB_URI = "mongodb://localhost:27017/DB1";
 
 //var app = express();
+app.use(cors());
 
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use(cookieParser()); // read cookies (needed for auth)
 

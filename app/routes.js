@@ -50,7 +50,12 @@ router.get('/updateFeedback/:feedback_id', feedbackController.updateFeedback); /
 //Add routes here
 router.get('/collectingSubscription',clientController.collectingSubscription);
 router.get('/getAllClients',clientController.getAllClients);
-router.get('/searchForClients',clientController.searchForClients);
+router.post('/searchForClientByName',clientController.searchForClientByName);
+router.post('/searchForClientByLocation',clientController.searchForClientByLocation);
+router.post('/searchForClientByCategory',clientController.searchForClientByLocation);
+
+//router.post('/searchForClient',clientController.searchForClientEventByName);
+
 router.get('/userSubscribeToClient',userController.userSubscribeToClient);
 router.get('/userUnsubscribe', userController.userUnsubscribe);
 
