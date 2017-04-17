@@ -46,12 +46,11 @@ let user_controller = {
                }else{
                  var clientJson = {"name":client.name, "email":client.email, "category":client.category};
                   array.push(clientJson);
-
-                if(jj == subscriptions.length-1){
-                  sendResponse();
-                }
-                   jj = jj + 1;
                }
+               if(jj == subscriptions.length-1){
+                 sendResponse();
+               }
+               jj = jj + 1;
              });
           }
           function sendResponse(){
@@ -87,12 +86,12 @@ let user_controller = {
                  var clientJson = {"name":client.name, "email":client.email, "category":client.category, "booked_date_time":booked_date_time};
                   array.push(clientJson);
 
-                if(jj == reservations.length-1){
-                  sendResponse();
-                }
-                   jj = jj + 1;
 
                }
+               if(jj == reservations.length-1){
+                 sendResponse();
+               }
+                    jj = jj + 1;
              });
           }
           function sendResponse(){
