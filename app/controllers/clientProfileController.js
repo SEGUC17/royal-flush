@@ -22,10 +22,9 @@ let clientProfileController = { // the name of the client should be saved in a s
 
         saveClientProfile:function(req, res){
 
-            // console.log(req.session);
-          //  var clientName = req.session.clientname;                     ////////////session
-            // var clientname = req.session.clientname;
-            var clientName = req.body.clientName;
+            // console.log(req.session);                   ////////////session
+            var clientName = req.session.clientname;
+            // var clientName = req.body.clientName;
             var clientDescription = req.body.clientDescription;
             var clientInfo = req.body.clientInfo;
             var clientPaymentInfo = req.body.paymentInfo;
