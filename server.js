@@ -25,8 +25,8 @@ app.use(passport.initialize());
 
 mongoose.connect(config.database);
 var db = mongoose.connection;
-var userSchema = require('./models/user.js');
-var User = mongoose.model( "user",userSchema);
+var User = require('./models/user.js');
+// var User = mongoose.model( "user",userSchema);
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -98,7 +98,7 @@ db.once('open', function() {
         res.sendFile(__dirname + '/public/index.html');
     });
 
-    app.listen(3000, function() {
-        console.log('Angular app listening on port 3000');
+    app.listen(8080, function() {
+        console.log('Angular app listening on port 8080');
     });
 });
