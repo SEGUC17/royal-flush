@@ -6,7 +6,7 @@ let client = require('../models/Client');
 let user_controller = {
 
   getUser:function(req, res){
-
+  // let user_Id = req.session.user_Id;
       user_Id = "58f3b7fe6bb367a838cb4891";    ///////required from session
 
       user.findOne({'_id':user_Id}, 'name username email address', function(err, user){
@@ -22,7 +22,7 @@ let user_controller = {
   },
 
   getSubscribedClients:function(req, res){
-
+  // let user_Id = req.session.user_Id;
     user_Id = "58f3b7fe6bb367a838cb4891";           // req from session
 
     subscription.find({'userId':user_Id}, 'clientId userId', function(err, subscriptions){
@@ -42,7 +42,7 @@ let user_controller = {
                if(err){
                  console.log(err.message);
                }else if(client == null){
-                 console.log("no clients");
+                 console.log("no client");
                }else{
                  var clientJson = {"name":client.name, "email":client.email, "category":client.category};
                   array.push(clientJson);
@@ -62,7 +62,7 @@ let user_controller = {
   },
 
   getReservations:function(req, res){
-
+  // let user_Id = req.session.user_Id;
     user_Id = "58f3b7fe6bb367a838cb4891";       // req from session
 
     reservation.find({'user_id':user_Id}, 'booked_date_time client_id user_id', function(err, reservations){
@@ -101,7 +101,39 @@ let user_controller = {
     });
   },
 
+    updateInfo:function(req, res){
+        // let user_Id = req.session.user_Id;
+        let user_Id = "58f3b7fe6bb367a838cb4891";
+        let name = req.body.name;
+        let email = req.body.email;
+        let address = req.body.address;
 
+        user.findOne({'_id':user_Id}, function(err, userProfile){
+            if(err){
+                  console.log(err.message);
+            }else if(userProfile == null){
+                console.log("no profile with this Id name!");
+                return;
+              }else{
+                  if(name != null){
+                    userProfile.name = name;
+                  }
+                  if(email != null){
+                    userProfile.email = email;
+                  }
+                  if(address != null){
+                    userProfile.address = address;
+                  }
+                  userProfile.save(function(err){
+                        if(err){
+                          console.log(err.message);
+                        }else{
+                          console.log("saved");
+                        }
+                  });
+              }
+      });
+    },
 
 }
 
