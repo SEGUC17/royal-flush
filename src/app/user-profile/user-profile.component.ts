@@ -28,6 +28,8 @@ export class UserProfileComponent implements OnInit {
    this.userProfileService.getReservations().subscribe(reservations => {
      this.reservations = reservations;
    });
+   
+
   }
 
 }

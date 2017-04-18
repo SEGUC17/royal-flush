@@ -40,10 +40,22 @@ router.get('/getSubscribedClients', (req, res) => {
 router.get('/getReservations', (req, res) => {
   // Get posts from the mock api
   // This should ideally be replaced with a service that connects to MongoDB
+
   axios.get(`${API}/reservations`)
     .then(reservations => {
       res.status(200).json(reservations.data);
     })
+    .catch(error => {
+      res.status(500).send(error)
+    });
+});
+
+//  Edit Profile
+router.post('/editUserProfile', (req, res) => {
+  // Get posts from the mock api
+  // This should ideally be replaced with a service that connects to MongoDB
+
+  axios.post(`${API}/test`, req.body)
     .catch(error => {
       res.status(500).send(error)
     });
