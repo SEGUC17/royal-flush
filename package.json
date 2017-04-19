@@ -1,26 +1,22 @@
 {
-  "name": "royal-flush",
+  "name": "meanauthapp",
   "version": "1.0.0",
-  "description": "Entertainment Directory",
-  "main": "server.js",
+  "description": "MEAN stack authentication app",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SeifIhab/Royal-Flush.git"
+  "dependencies":{
+    "express":"*",
+    "mongoose":"*",
+    "bcryptjs":"*",
+    "cors":"*",
+    "jsonwebtoken":"*",
+    "body-parser":"*",
+    "passport":"*",
+    "passport-jwt":"*"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SeifIhab/Royal-Flush/issues"
-  },
-  "homepage": "https://github.com/SeifIhab/Royal-Flush#readme",
-  "dependencies": {
-    "body-parser": "^1.17.1",
-    "ejs": "^2.5.6",
-    "express": "^4.15.2",
-    "mongojs": "^2.4.0",
-    "mongoose": "^4.9.2"
-  }
+  "author": "Brad Traversy",
+  "license": "ISC"
 }

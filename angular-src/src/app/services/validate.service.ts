@@ -4,10 +4,11 @@ import { Injectable } from '@angular/core';
 export class ValidateService {
 
   constructor() { }
-  validateClientProfile(clientprof){
-    if(clientprof.clientName == undefined || clientprof.email == undefined || clientprof.category == undefined || clientprof.fullname == undefined || clientprof.contactNo == undefined || clientprof.clientDescription == undefined || clientprof.clientInfo == undefined || clientprof.paymentInfo == undefined){
+
+  validateRegister(user){
+    if(user.name == undefined || user.email == undefined || user.username == undefined || user.password == undefined){
       return false;
-    }else{
+    } else {
       return true;
     }
   }
