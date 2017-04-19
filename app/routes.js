@@ -42,7 +42,7 @@ router.get('/viewTodayDeals', dealController.getTodayDeals);
 router.get('/viewFeedback/:feedback_id', feedbackController.getFeedback);
 router.get('/viewFeedbacks', feedbackController.getAllFeedbacks);
 router.get('/viewAllClientFeedbacks/:client_id', feedbackController.getAllClientFeedbacks);
-router.post('/addNewFeedback/:client_id', feedbackController.addNewFeedback); // Should change to post when frontend is added
+router.post('/addNewFeedback/', feedbackController.addNewFeedback); // Should change to post when frontend is added
 router.get('/deleteAllFeedbacks', feedbackController.deleteAllFeedbacks);
 router.get('/deleteFeedback/:feedback_id', feedbackController.deleteFeedback);
 router.get('/updateFeedback/:feedback_id', feedbackController.updateFeedback); // Should change to post when frontend is added
@@ -54,8 +54,6 @@ router.get('/searchForClients',clientController.searchForClients);
 router.get('/userSubscribeToClient',userController.userSubscribeToClient);
 router.get('/userUnsubscribe', userController.userUnsubscribe);
 
-router.get("/viewAllClientProfiles", clientProfileController.viewAllClientProfiles);
-router.get("/deleteAllClientProfiles", clientProfileController.deleteAllClientProfiles);
 // Amr's routes Added Manually
 
 router.post('/createClientProfile', clientProfileController.createClientProfile);
