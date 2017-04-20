@@ -1,0 +1,161 @@
+<h1> All Clients and Events</h1>
+
+<div *ngIf="clientSearch; else elseBlock">
+
+<form>
+  <div class="form-group">
+    <input class="form-control" type="submit" value="All Clients"
+      (keyup)="getClients()">
+  </div>
+</form>
+</div>
+<ng-template #elseBlock>
+<form>
+  <div class="form-group">
+    <input class="form-control" type="submit" value = "All Events"
+      (keyup)="getEvents()">
+  </div>
+</form>
+<form>
+    <div class="form-group">
+      <input class="form-control" type="text" placeholder="Looking for specific client?" [(ngModel)]="searchKey" name="searchKey"
+        (keyup)="getInfo(searchKey)">
+    </div>
+  </form>
+</ng-template>
+
+
+<md-tab-group md-stretch-tabs (selectChange)="onLinkClick($event)">
+<md-tab>
+
+<div *ngIf="clientSearch; else else2Block">
+
+<div *ngIf="ClientRes">
+  <div *ngFor="let result of ClientRes ">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="search-res well">
+          <h4> {{result.name}} </h4>
+          <h6>Category: {{result.category}} </h6>
+          <h6>Address: {{result.address}} </h6>
+          <h6>Working hours: {{result.start_hour}}-{{result.end_hour}} </h6>
+          <h6>Working days: {{result.working_days}} </h6>
+
+          <div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<ng-template #else2Block>
+<div *ngIf="ClientRes">
+  <div *ngFor="let result of ClientRes">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="search-res well">
+          <h4> {{result.eventName}} </h4>
+          <h6>Provider: {{result.clientName}} </h6>
+          <h6>Location: {{result.location}} </h6>
+          <h6>Running thru: {{result.startingDate}}-{{result.endingDate}} </h6>
+          <h6>Price: {{result.price}} </h6>
+
+          <div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>
+
+<section>
+
+<div class="container" style="margin-top: 30px;">
+<div class="profile-head">
+<div class="col-md- col-sm-4 col-xs-12">
+<img src="http://www.newlifefamilychiropractic.net/wp-content/uploads/2014/07/300x300.gif" class="img-responsive" />
+<h6><%=ClientRes.name</h6>
+</div><!--col-md-4 col-sm-4 col-xs-12 close-->
+
+
+<div class="col-md-5 col-sm-5 col-xs-12">
+<h5><%=ClientRes.name%></h5>
+<p><%=ClientRes.category%> </p>
+<ul>
+<li><span class="glyphicon glyphicon-home"></span> <%=ClientRes.address%></li>
+<li><span class="glyphicon glyphicon-phone"></span> <a href="#" title="call"><%=ClientRes.phone%></a></li>
+<li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="mail"><%=ClientRes.email%></a></li>
+<li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="timiing"><%=ClientRes.start_hour%></a></li>
+<li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="ending"><%=ClientRes.end_hour%></a></li>
+</ul>
+
+
+</div><!--col-md-8 col-sm-8 col-xs-12 close-->
+
+
+
+
+</div><!--profile-head close-->
+</div><!--container close-->
+
+
+<div id="sticky" class="container">
+
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+    <div class="tab-pane fade active in" id="profile">
+    <div class="container">
+<div class="col-sm-11" style="float:left;">
+<div class="hve-pro">
+<p>This is a brief about the client info and history.</p>
+</div><!--hve-pro close-->
+</div><!--col-sm-12 close-->
+<br clear="all" />
+<div class="row">
+<div class="col-md-12">
+<h4 class="pro-title">Client Information</h4>
+</div><!--col-md-12 close-->
+
+
+<div class="col-md-6">
+
+<div class="table-responsive responsiv-table">
+  <table class="table bio-table">
+      <tbody>
+     <tr>
+        <td>Name:</td>
+        <td>: <%=ClientRes.name%></td>
+     </tr>
+
+     <tr>
+        <td>Email</td>
+        <td>: <%=ClientRes.email%></td>
+    </tr>
+    <tr>
+        <td>Address</td>
+          <td>: <%=ClientRes.address%></td>
+    </tr>
+    <tr>
+        <td>Category</td>
+        <td>: <%=ClientRes.category%></td>
+     </tr>
+     <tr>
+         <td>Start Hour</td>
+         <td>: <%=ClientRes.start_hour%></td>
+      </tr>
+      <tr>
+          <td>End Hour</td>
+          <td>: <%=ClientRes.end_hour%></td>
+       </tr>
+       <tr>
+           <td>Working Days</td>
+           <td>: <%=ClientRes.working_days%></td>
+        </tr>
+
+    </tbody>
+  </table>
+  </div><!--table-responsive close-->
+</div><!--col-md-6 close-->
