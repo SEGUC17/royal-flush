@@ -59,6 +59,8 @@ router.post('/searchForClientByCategory',clientController.searchForClientByLocat
 router.get('/userSubscribeToClient',userController.userSubscribeToClient);
 router.get('/userUnsubscribe', userController.userUnsubscribe);
 
+router.get("/viewAllClientProfiles", clientProfileController.viewAllClientProfiles);
+router.get("/deleteAllClientProfiles", clientProfileController.deleteAllClientProfiles);
 // Amr's routes Added Manually
 
 router.post('/createClientProfile', clientProfileController.createClientProfile);

@@ -10,24 +10,40 @@ let clientProfileController = { // the name of the client should be saved in a s
 
         },
 
+        viewAllClientProfiles:function(req, res){
+          clientProfile.find(function(err, clientprofs){
+            if(err){
+              res.send(err.message);
+            }else {
+              res.json(clientprofs);
+            }
+          });
+        },
+
         saveClientProfile:function(req, res){
 
-            console.log(req.session);
-          //  var clientName = req.session.clientname;                     ////////////session
-            var clientname = req.session.clientname;
-            var clientDescription = req.body.description;
+            // console.log(req.session);                   ////////////session
+            var clientName = req.session.clientname;
+            // var clientName = req.body.clientName;
+            var clientDescription = req.body.clientDescription;
             var clientInfo = req.body.clientInfo;
             var clientPaymentInfo = req.body.paymentInfo;
             var category = req.body.category;
+            var email = req.body.email;
+            var fullname = req.body.fullname;
+            var contactNo = req.body.contactNo;
 
+            // console.log(clientName + ' ' + clientDescription + ' ' + clientInfo + ' ' + clientPaymentInfo + ' ' + category + ' ' + email + ' ' + fullname + ' ' + contactNo );
 
             var clientProfileData = {
-                                    clientName:clientname,
+                                    clientName:clientName,
                                     clientDescription:clientDescription,
                                     clientInfo:clientInfo,
                                     paymentInfo:clientPaymentInfo,
-                                    category:category
-
+                                    category:category,
+                                    email:email,
+                                    fullname:fullname,
+                                    contactNo:contactNo
                                   };
 
                             //      console.log(clientProfileData);
@@ -37,14 +53,17 @@ let clientProfileController = { // the name of the client should be saved in a s
             client_profile.save(function(err, client_profile){
 
                     if(err){
-                      console.log(err.message);
+                      // console.log(err.message);
+                      // res.json({success: false, msg:'Failed to create profile'});
+                      res.status(504);
+                      res.end(err);
                     }else{
-                      console.log("client profile saved!");
+                      // console.log("client profile saved!");
+                      // res.json({success: true, msg:'Profile created successfully!'});
+                      // console.log('Client saved');
+                      res.end(err);
                     }
-
             });
-
-
         },
 /////////////////////////////////////////////////////////////
         uploadClientFile:function(req, res){
@@ -132,7 +151,7 @@ let clientProfileController = { // the name of the client should be saved in a s
       //  var clientname = req.session.clientname;
           var clientname = req.session.clientname;
 
-        var getProfile = clientProfile.findOne({'clientName':clientname}, 'clientName clientDescription clientInfo paymentInfo category', function(err, clientProfile){
+        var getProfile = clientProfile.findOne({'clientName':clientname}, 'clientName clientDescription clientInfo paymentInfo category email fullname contactNo', function(err, clientProfile){
 
             if(err){
 
@@ -206,6 +225,9 @@ let clientProfileController = { // the name of the client should be saved in a s
         var clientInfo = req.body.clientInfo;
         var clientPaymentInfo = req.body.paymentInfo;
         var category = req.body.category;
+        var email = req.body.email;
+        var fullname = req.body.fullname;
+        var contactNo = req.body.contactNo;
 
         clientProfile.findOne({'clientName':clientname}, function(err, clientProfile){
             if(err){
@@ -225,6 +247,15 @@ let clientProfileController = { // the name of the client should be saved in a s
                   }
                   if(category != null){
                     clientProfile.category = category;
+                  }
+                  if(email != null){
+                    clientProfile.email = email;
+                  }
+                  if(fullname != null){
+                    clientProfile.fullname = fullname;
+                  }
+                  if(contactNo != null){
+                    clientProfile.contactNo = contactNo;
                   }
                   clientProfile.save(function(err){
                         if(err){
@@ -246,10 +277,17 @@ let clientProfileController = { // the name of the client should be saved in a s
                 console.log("Client profile removed!");
           }
     });
+  },
+
+  deleteAllClientProfiles:function(req, res){
+    clientProfile.remove(function(err){
+      if(err){
+        res.send(err.message);
+      }else{
+        res.send("Clients deleted successfully!");
+      }
+    });
   }
-
-
-
 }
 
 module.exports = clientProfileController;

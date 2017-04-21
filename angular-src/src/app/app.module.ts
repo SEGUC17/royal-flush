@@ -29,6 +29,7 @@ import { CategoryPipe } from './pipes/category.pipe';
 import { PricePipe } from './pipes/price.pipe';
 import { LocationEventPipe } from './pipes/location-event.pipe';
 import { ClientComponent } from './components/client/client.component';
+import { ClientprofileComponent } from './components/clientprofile/clientprofile.component';
 
 const appRoutes: Routes = [
 
@@ -40,8 +41,9 @@ const appRoutes: Routes = [
   { path: 'search', component: SearchComponent },
 
   { path: '', component: HomeComponent },
-
+  {path:'clientprofile', component:ClientprofileComponent},
   { path: '**', redirectTo: '' },
+
 
 ];
 
@@ -60,7 +62,9 @@ const appRoutes: Routes = [
     CategoryPipe,
     PricePipe,
     LocationEventPipe,
-    ClientComponent
+    ClientComponent,
+    ClientprofileComponent
+
   ],
   imports: [
     BrowserModule,
@@ -78,6 +82,7 @@ const appRoutes: Routes = [
     MdSliderModule
   ],
   providers: [ValidateService, AuthService, AuthGuard, RetrieveService, SearchService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
