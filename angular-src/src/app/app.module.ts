@@ -12,10 +12,13 @@ import { HomeComponent } from './components/home/home.component';
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
+import { UnVarifiedClientProfileComponent } from './components/un-varified-client-profile/un-varified-client-profile.component';
+
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent},
-  {path:'clientprofile', component:ClientprofileComponent}
+  {path:'clientprofile', component:ClientprofileComponent},
+  {path:'UnVarifiedClientProfile',component:UnVarifiedClientProfileComponent}
 ];
 
 @NgModule({
@@ -23,7 +26,8 @@ const appRoutes: Routes = [
     AppComponent,
     ClientprofileComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    UnVarifiedClientProfileComponent
   ],
   imports: [
     BrowserModule,

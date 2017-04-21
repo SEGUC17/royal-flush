@@ -24,6 +24,9 @@ var feedbackController = require('./controllers/feedbackController');
 var administratorController= require('./controllers/administaratorController');
 var clientProfileController = require('./controllers/clientProfileController');
 var clientEventController = require('./controllers/clientEventController');
+var verifyClientController = require('./controllers/verifyClientController');
+var emailController = require('./controllers/emailController');
+var mandrill = require('node-mandrill')('AIzaSyATF9snxRM9NRydzxDnZvO9JMVS1fePrXA');  
 
 // Deal Routes
 router.get('/viewDeal/:deal_id', dealController.getDeal);
@@ -80,5 +83,11 @@ router.post('/deleteClientEvent', clientEventController.deleteClientEvent);
 
 router.get("/administratorLogin", administratorController.administratorLogin);
 // router.get("/viewFeedback", clientController.viewFeedback);
+
+
+//router.get('/varifyClients',verifyClientController.viewUnverifiedClients);
+router.get('/UnVarifiedClientProfile',verifyClientController.viewClient);
+router.post( '/api/sendemail/',emailController.verificationEmail);
+router.post( '/api/sendemail/',emailController.rejectionEmail);
 
 module.exports = router;
