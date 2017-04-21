@@ -69,16 +69,14 @@ clientSchema.methods.validPassword = function (password) {
 const Client = module.exports = mongoose.model("client", clientSchema);
 
 module.exports.findByClientName = function (clientName, callback) {
-  // const query = { name: clientName, verified:true };
-    const query = { name: {$regex: ".*"+clientName+".*",$options: 'i'}};
-    // const query = { name: ".*"+clientName+".*"};
-
+  const query = { name: { $regex: ".*" + clientName + ".*", $options: 'i' } };
+  
   Client.find(query, callback);
 }
 
 module.exports.findByClientLocation = function (clientLocation, callback) {
   // const query = { location: clientLocation, verified: true };
-  const query = { location: clientLocation};
+  const query = { location: clientLocation };
 
   Client.find(query, callback);
 }

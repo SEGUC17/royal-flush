@@ -11,7 +11,7 @@ export class PricePipe implements PipeTransform {
 
 
     return results.filter(function (result) {
-      return (result.price < term);
+      return (result.price <= term);
     });
   }
 

@@ -15,12 +15,18 @@ var client_event_schema = mongoose.Schema({
 
   });
 
-const event = mongoose.model('clientevent', client_event_schema);
+const clientEvent = module.exports = mongoose.model("clientEvent", client_event_schema);
 
-module.exports = event;
 //method definition
+// module.exports.findByEventName = function (name, callback) {
+//   const query = { eventName: { $regex: ".*" + name + ".*", $options: 'i' } };
+
+//   event.find(query, callback);
+// }
+
 module.exports.findByEventName = function (eventName, callback) {
   const query = { eventName: { $regex: ".*" + eventName + ".*", $options: 'i' } };
+ 
 
-  event.find(query, callback);
+ clientEvent.find(query, callback);
 }

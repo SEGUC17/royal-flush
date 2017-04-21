@@ -1,25 +1,5 @@
 <h1> Chilling?</h1>
 <p class="lead">Use the ..&Chill app to find your next adventure!</p>
-
-<div *ngIf="clientSearch; else elseBlock">
-
-  <form>
-    <div class="form-group">
-      <input class="form-control" type="text" placeholder="Find your next adventure.." [(ngModel)]="searchKey" name="searchKey"
-        (keyup)="searchClients()">
-    </div>
-  </form>
-</div>
-<ng-template #elseBlock>
-  <form>
-    <div class="form-group">
-      <input class="form-control" type="text" placeholder="Find your next adventure.." [(ngModel)]="searchKey" name="searchKey"
-        (keyup)="searchEvents()">
-    </div>
-  </form>
-</ng-template>
-
-
 <md-tab-group md-stretch-tabs (selectChange)="onLinkClick($event)">
   <md-tab>
     <ng-template md-tab-label>
@@ -71,13 +51,13 @@
       </md-grid-tile>
       <md-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightblue'">
 
-        <md-slider class="example-margin" [max]="1000" [min]="0" [step]="50" [thumb-label]="true" [tick-interval]="true" [value]="0">
+        <md-slider class="example-margin" [(ngModel)]="priceTerm" name="priceTerm" [max]="1000" [min]="0" [step]="50" [thumb-label]="true" [tick-interval]="true" [value]="1000">
         </md-slider>
       </md-grid-tile>
       <md-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightblue'">
 
         <form>
-          <md-select placeholder="Category" [(ngModel)]="categoryTerm" name="categoryTerm" ngDefaultControl>
+          <md-select placeholder="Category" [(ngModel)]="categoryTerm2" name="categoryTerm2" ngDefaultControl>
             <md-option [value]="">All Categories</md-option>
             <md-option [value]="'Fun stuff'">Fun stuff</md-option>
             <md-option [value]="'Good stuff'">Good stuff</md-option>
@@ -90,23 +70,16 @@
   </md-tab>
 </md-tab-group>
 
-<!--<select [(ngModel)]="term" name="term" class="btn btn-default dropdown-toggle">
-    <option [selected]="term == 'New Cairo'">New Cairo</option>
-    <option [selected]="term == 'Nasr City'">Nasr City</option>
-    <option [selected]="term == 'New Cairo'">New Cairo</option>
-   
-  </select>
-</div>-->
+<div *ngIf="clientSearch; else elseBlock">
 
-
-<!--<form id="filter">
-  <label>Filter clients by location</label>
-  <input type="text" [(ngModel)]="term" name="term"/>
-  </form>-->
-<div *ngIf="clientSearch; else else2Block">
-
+  <form>
+    <div class="form-group">
+      <input class="form-control" type="text" placeholder="Find your next adventure.." [(ngModel)]="searchKey" name="searchKey"
+        (keyup)="searchClients()">
+    </div>
+  </form>
   <div *ngIf="searchRes">
-    <div *ngFor="let result of searchRes | location:locationTerm | category:categoryTerm">
+    <div *ngFor="let result of searchRes | location:locationTerm | category:categoryTerm | price:priceTerm">
       <div class="row">
         <div class="col-md-8">
           <div class="search-res well">
@@ -124,9 +97,15 @@
     </div>
   </div>
 </div>
-<ng-template #else2Block>
+<ng-template #elseBlock>
+  <form>
+    <div class="form-group">
+      <input class="form-control" type="text" placeholder="Find your next adventure.." [(ngModel)]="searchKey" name="searchKey"
+        (keyup)="searchEvents()">
+    </div>
+  </form>
   <div *ngIf="searchRes">
-    <div *ngFor="let result of searchRes | location:locationTerm | category:categoryTerm">
+    <div *ngFor="let result of searchRes | locationEvent:locationTerm | price:priceTerm">
       <div class="row">
         <div class="col-md-8">
           <div class="search-res well">
@@ -144,3 +123,26 @@
     </div>
   </div>
 </ng-template>
+
+
+
+<!--<select [(ngModel)]="term" name="term" class="btn btn-default dropdown-toggle">
+    <option [selected]="term == 'New Cairo'">New Cairo</option>
+    <option [selected]="term == 'Nasr City'">Nasr City</option>
+    <option [selected]="term == 'New Cairo'">New Cairo</option>
+   
+  </select>
+</div>-->
+
+
+<!--<form id="filter">
+  <label>Filter clients by location</label>
+  <input type="text" [(ngModel)]="term" name="term"/>
+  </form>-->
+<div *ngIf="clientSearch; else else2Block">
+
+</div>
+
+  <ng-template #else2Block>
+
+  </ng-template>

@@ -98,7 +98,7 @@ let clientController = {
     });
   },
   searchForClientByName: function (req, res) {
-    Client.findByClientName(req.body.searchKey, function (err, clients) {
+    Client.FindByClientName(req.body.searchKey, function (err, clients) {
       if (err) throw err;
       res.send(clients);
     });

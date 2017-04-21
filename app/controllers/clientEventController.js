@@ -53,7 +53,8 @@ let clientEventController = { // the name of the client should be saved in a ses
 
 
   },
-searchForClientEventByName: function (req, res) {
+  searchForClientEventByName: function (req, res) {
+    console.log("HEEH");
     clientEvent.findByEventName(req.body.searchKey, function (err, clientEvents) {
       if (err) throw err;
       res.send(clientEvents);

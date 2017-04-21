@@ -27,6 +27,7 @@ import { SearchComponent } from './components/search/search.component';
 import { LocationPipe } from './pipes/location.pipe';
 import { CategoryPipe } from './pipes/category.pipe';
 import { PricePipe } from './pipes/price.pipe';
+import { LocationEventPipe } from './pipes/location-event.pipe';
 
 const appRoutes: Routes = [
 
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
     SearchComponent,
     LocationPipe,
     CategoryPipe,
-    PricePipe
+    PricePipe,
+    LocationEventPipe
   ],
   imports: [
     BrowserModule,
