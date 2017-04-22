@@ -33,10 +33,10 @@ searchKey:string;
   }
 
   search(){
-    const searchKey = {
-      searchKey: this.searchKey
-    }
-    this.router.navigate(['/search',searchKey]);  
+    // const searchKey = {
+    //   searchKey: this.searchKey
+    // }
+    this.router.navigate(['/search']);  
   }
 
 }

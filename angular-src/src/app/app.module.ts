@@ -33,13 +33,13 @@ import { ClientprofileComponent } from './components/clientprofile/clientprofile
 
 const appRoutes: Routes = [
 
-  // { path: 'register', component: RegisterComponent },
-  // { path: 'login', component: LoginComponent },
-  // { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  // { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   // { path: 'company/:username', component: CompanyComponent },
   { path: 'search', component: SearchComponent },
-
+  {path:'client', component:ClientComponent},
   { path: '', component: HomeComponent },
   {path:'clientprofile', component:ClientprofileComponent},
   { path: '**', redirectTo: '' },

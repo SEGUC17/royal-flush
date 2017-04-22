@@ -36,9 +36,7 @@ export class RegisterComponent implements OnInit {
       username: this.username,
       email: this.email,
       password: this.password,
-      usertype: this.usertype,
-      city: this.city,
-      companyid: this.companyid
+      // city: this.city,
     }
   // Required Fields
     if(!this.validateService.validateRegister(user)){

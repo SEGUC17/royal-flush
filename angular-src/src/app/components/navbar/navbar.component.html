@@ -14,19 +14,19 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-left">
         <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/']">Home</a></li>
-<!--<<<<<<< HEAD
-
+<!--<<<<<<< HEAD-->
       </ul>
       <form class="navbar-form navbar-right" role="search" (submit)="search()">
-        <div class="form-group">
+        <!--<div class="form-group">
           <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchKey" name="searchKey">
-        </div>
+        </div>-->
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
       </form>
 
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/profile']">Profile</a></li>
         <li *ngIf="authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+        <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/clientprofile']">Client?</a></li>
 
         <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/login']">Login</a></li>
         <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/register']">Register</a></li>
@@ -35,16 +35,16 @@
       </ul>
     </div>
     <!--/.nav-collapse -->
-  <!--</div>
+  </div>
 </nav>
-=======-->
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a>About</a></li>
+<!--=======-->
+
+        <!--<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a>About</a></li>
         <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a>Browse</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/clientprofile']">Profile</a></li>
       </ul>
-    </div><!--/.nav-collapse -->
+    </div>
   </div>
-</nav>
+</nav>-->
 <!-->>>>>>> f1d3e2d180b4d1a2f1311d8ec95e74d4de216215-->
