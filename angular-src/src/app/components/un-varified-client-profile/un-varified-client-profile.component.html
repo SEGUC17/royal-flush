@@ -19,49 +19,57 @@ border-color: rgba(224, 97, 40, 0.8);
   border: 0px;
 }
 </style>
-<h2 class="page-header">Create Client Profile</h2>
+<h2 class="page-header"> Client Profile</h2>
 <div class="row">
-  <form (submit)="saveClientProfile()" class="col-md-6" >
-    <!-- <div class="form-group col-md-12">
+  <form (Verify)="verifyClient()" class="col-md-6" >
+    <div class="form-group col-md-12">
       <label>Business Name</label>
-      <input type="text" [(ngModel)]="clientName" name="clientName" class="form-control dis"/>
-    </div> -->
+      <!-- <input type="text" [(ngModel)]="clientName" name="clientName" class="form-control dis"/> -->
+       {{ClientProfile.clientName}}
+    </div>
     <div class="form-group col-md-12">
       <label>Business Email</label>
-      <input type="text" [(ngModel)]="email" name="email" class="form-control" />
+      <!-- <input type="text" [(ngModel)]="email" name="email" class="form-control" /> -->
+      {{ClientProfile.email}}
     </div>
     <div class="form-group col-md-12">
       <label class="col-md-12">Business Category</label>
-      <select class="col-md-12" id="#" [(ngModel)]="category" name="category">
+      <!-- <select class="col-md-12" id="#" [(ngModel)]="category" name="category">
         <option value="Food">Food</option>
         <option value="Shopping">Shopping</option>
         <option value="Fun">Fun</option>
         <option value="Parks">Parks</option>
         <option value="Other">Other</option>
-      </select>
+      </select> -->
+      {{clientProfile.category}} 
     </div>
     <div class="form-group col-md-12">
       <label>Owner Full Name</label>
-      <input type="text" [(ngModel)]="fullname" name="fullname" class="form-control" />
+     <!--  <input type="text" [(ngModel)]="fullname" name="fullname" class="form-control" /> -->
+     {{clientProfile.fullname}}
     </div>
     <div class="form-group col-md-12">
       <label>Contact Number</label>
-      <input type="text" [(ngModel)]="contactNo" name="contactNo" class="form-control">
+      <!-- <input type="text" [(ngModel)]="contactNo" name="contactNo" class="form-control"> -->
+      {{clientProfile.contactNo}}
     </div>
     <div class="form-group col-md-12">
       <label>Business Description</label>
-      <textarea [(ngModel)]="clientDescription" name="clientDescription" class="form-control"></textarea>
+      <!-- <textarea [(ngModel)]="clientDescription" name="clientDescription" class="form-control"></textarea> -->
+      {{clientProfile.clientDescription}}
     </div>
     <div class="form-group col-md-12">
       <label>Business Information</label>
-      <textarea [(ngModel)]="clientInfo" name="clientInfo" class="form-control"></textarea>
+      <!-- <textarea [(ngModel)]="clientInfo" name="clientInfo" class="form-control"></textarea> -->
+      {{clientProfile.clientInfo}}
     </div>
     <div class="form-group col-md-12">
       <label>Payment Information</label>
-      <textarea [(ngModel)]="paymentInfo" name="paymentInfo" class="form-control"></textarea>
+      <!-- <textarea [(ngModel)]="paymentInfo" name="paymentInfo" class="form-control"></textarea> -->
+      {{clientProfile.paymentInfo}}
     </div>
     <div class="form-group col-md-12">
-      <input type="submit" class="btn btn-primary clbtn" value="Submit for Verification">
+      <input type="submit" class="btn btn-primary clbtn" value="Verify">
     </div>
   </form>
 </div>

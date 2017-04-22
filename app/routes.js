@@ -86,8 +86,10 @@ router.get("/administratorLogin", administratorController.administratorLogin);
 
 
 //router.get('/varifyClients',verifyClientController.viewUnverifiedClients);
-router.get('/UnVarifiedClientProfile',verifyClientController.viewClient);
+router.get('/UnVarifiedClientProfile',clientProfileController.viewClientProfile);
 router.post( '/api/sendemail/',emailController.verificationEmail);
 router.post( '/api/sendemail/',emailController.rejectionEmail);
+router.post( '/verifyClient'.verifyClientController.verifyClient);
+router.post( '/rejectClient'.verifyClientController.rejectClient);
 
 module.exports = router;
