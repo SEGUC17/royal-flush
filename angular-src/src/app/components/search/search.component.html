@@ -5,7 +5,7 @@
     <ng-template md-tab-label>
       <h4>Clients</h4>
     </ng-template>
-    <md-grid-list cols="2" rowHeight="20px">
+    <md-grid-list cols="2" rowHeight="40px">
       <md-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightblue'">
         <!--<h2>Filter by Location</h2>-->
         <form>
@@ -37,7 +37,7 @@
       <h4>Events</h4>
       <md-icon md-font-set="material-icons">thumb_down</md-icon>
     </ng-template>
-    <md-grid-list cols="3" rowHeight="50px">
+    <md-grid-list cols="3" rowHeight="40px">
       <md-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightblue'">
         <form>
           <md-select placeholder="Location" [(ngModel)]="locationTerm" name="locationTerm" ngDefaultControl>
@@ -51,7 +51,7 @@
       </md-grid-tile>
       <md-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightblue'">
 
-        <md-slider class="example-margin" [(ngModel)]="priceTerm" name="priceTerm" [max]="1000" [min]="0" [step]="50" [thumb-label]="true" [tick-interval]="true" [value]="1000">
+        <md-slider class="example-margin" placeholder="Price" [(ngModel)]="priceTerm" name="priceTerm" [max]="1000" [min]="0" [step]="50" [thumb-label]="true" [tick-interval]="true" [value]="1000">
         </md-slider>
       </md-grid-tile>
       <md-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightblue'">

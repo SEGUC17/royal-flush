@@ -18,11 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
 
-    // this.retrieveService.getRandomBusinesses().subscribe(businesses => { this.businesses = businesses },
-    //   err => {
-    //     console.log(err);
-    //     return false;
-    //   });
+
 
   }
 

@@ -22,7 +22,7 @@ import { RetrieveService } from './services/retrieve.service';
 import { AuthGuard } from './guards/auth.guard';
 import { ValidateService } from './services/validate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
-import { CompanyComponent } from './components/company/company.component';
+// import { CompanyComponent } from './components/company/company.component';
 import { SearchComponent } from './components/search/search.component';
 import { LocationPipe } from './pipes/location.pipe';
 import { CategoryPipe } from './pipes/category.pipe';
@@ -56,7 +56,7 @@ const appRoutes: Routes = [
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    CompanyComponent,
+    // CompanyComponent,
     SearchComponent,
     LocationPipe,
     CategoryPipe,
