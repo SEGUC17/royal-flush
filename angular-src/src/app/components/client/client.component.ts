@@ -24,16 +24,14 @@ export class ClientComponent implements OnInit {
 
 
   ngOnInit() {
-    // console.log(this.route.snapshot.params['searchKey']);
+      this.searchKey = this.route.snapshot.params['username'];
 
-    //  this.sub = this.route.params.subscribe(params =>  this.searchKey = params['searchKey']);
-    //   this.route.params.subscribe(params =>  console.log(params['searchKey']));
-
-    //   this.searchService.search(this.searchKey).subscribe(res => {this.ClientRes = res},
-    //    err => {
-    //       console.log(err);
-    //       return false;
-    //     });
+    this.retrieveService.getClientProfile(this.searchKey).subscribe(ClientRes => {
+      if (!searchKey.success) {
+        this.router.navigate(['/']);
+      }else{
+        this.ClientRes = searchKey.user;
+     });
 
   }
 
