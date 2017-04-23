@@ -8,7 +8,6 @@ yarn-error.log*
 # Dependency directories
 angular-src/node_modules/
 node_modules/
-jspm_packages/
 
 # macOS
 .DS_Store
