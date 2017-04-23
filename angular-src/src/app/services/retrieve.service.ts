@@ -17,4 +17,8 @@ export class RetrieveService {
   getRandomBusinesses() {
     return this.http.get('http://localhost:3000/users/randombusinesses').map(res => res.json().results);
   }
+    getClientProfile(username) {
+    return this.http.get('http://localhost:3000/ClientRes/' + username).map(res => res.json());
+
+  }
 }
