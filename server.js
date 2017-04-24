@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const flash    = require('connect-flash');
 const router  = require('./app/routes.js');
 const config = require('./app/config/database');
-
+const api = require('./angular-src/server/routes/api.js')
 // const morgan       = require('morgan');
 const cookieParser = require('cookie-parser');
 const session      = require('express-session');

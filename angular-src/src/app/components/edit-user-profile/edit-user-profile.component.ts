@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EditUserProfileService } from '../services/edit-user-profile.service';
+import { EditUserProfileService } from '../../services/edit-user-profile.service';
 import {NgForm} from '@angular/forms';
 
 @Component({

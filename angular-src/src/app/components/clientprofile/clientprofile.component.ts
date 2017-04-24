@@ -57,7 +57,7 @@ export class ClientprofileComponent implements OnInit {
     }
 
     //Create Client Profile
-    this.http.post('http://localhost:8080/saveClientProfile', JSON.stringify(clientprof), {headers:headers})
+    this.http.post('http://localhost:8080/saveClientProfile', clientprof, {headers:headers})
     .subscribe(err => console.log(err));
     // console.log("fff" + err);
     this.flashMessage.show("Profile created successfully!", {cssClass: 'alert-success', timeout: 3000});

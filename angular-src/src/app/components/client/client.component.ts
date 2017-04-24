@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { Router, ActivatedRoute } from '@angular/router';
-<<<<<<< HEAD
 import { RetrieveService } from '../../services/retrieve.service';
-=======
->>>>>>> de7397d57657435c23218f95463359110ade42c5
 
 @Component({
   selector: 'app-client',
@@ -16,7 +13,7 @@ export class ClientComponent implements OnInit {
   searchKey: String;
 
   clientSearch: boolean = true;
-  ClientRes: Object[];
+  ClientRes: Object;
 
 
   constructor(

@@ -18,7 +18,7 @@ export class RetrieveService {
     return this.http.get('http://localhost:3000/users/randombusinesses').map(res => res.json().results);
   }
     getClientProfile(username) {
-    return this.http.get('http://localhost:3000/ClientRes/' + username).map(res => res.json());
+    return this.http.get('http://localhost:8080/ClientRes/' + username).map(res => res.json());
 
   }
 }

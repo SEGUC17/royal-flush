@@ -36,7 +36,7 @@ const config = require('./config/database');
 router.get('/getUser', userController.getUser);
 router.get('/subscriptions', userController.getSubscribedClients);
 router.get('/reservations', userController.getReservations);
-router.post('/test', user_controller.updateInfo);
+router.post('/test', userController.updateInfo);
 //////////
 // Deal Routes
 router.get('/viewDeal/:deal_id', dealController.getDeal);

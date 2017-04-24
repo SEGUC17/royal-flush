@@ -1,5 +1,5 @@
 <h1> All Clients and Events</h1>
-
+<!--
 <div *ngIf="clientSearch; else elseBlock">
 
 <form>
@@ -68,27 +68,28 @@
     </div>
   </div>
 </div>
-</ng-template>
+</ng-template>-->
 
 <section>
+  <!--<div *ngIf="ClientRes">-->
 
 <div class="container" style="margin-top: 30px;">
 <div class="profile-head">
 <div class="col-md- col-sm-4 col-xs-12">
 <img src="http://www.newlifefamilychiropractic.net/wp-content/uploads/2014/07/300x300.gif" class="img-responsive" />
-<h6><%=ClientRes.name</h6>
+<h6>{{ClientRes.name}}</h6>
 </div><!--col-md-4 col-sm-4 col-xs-12 close-->
 
 
 <div class="col-md-5 col-sm-5 col-xs-12">
-<h5><%=ClientRes.name%></h5>
-<p><%=ClientRes.category%> </p>
+<h5>{{ClientRes.name}}</h5>
+<p>{{ClientRes.category}} </p>
 <ul>
-<li><span class="glyphicon glyphicon-home"></span> <%=ClientRes.address%></li>
-<li><span class="glyphicon glyphicon-phone"></span> <a href="#" title="call"><%=ClientRes.phone%></a></li>
-<li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="mail"><%=ClientRes.email%></a></li>
-<li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="timiing"><%=ClientRes.start_hour%></a></li>
-<li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="ending"><%=ClientRes.end_hour%></a></li>
+<li><span class="glyphicon glyphicon-home"></span> {{ClientRes.address}}</li>
+<li><span class="glyphicon glyphicon-phone"></span> <a href="#" title="call">{{ClientRes.phone}}</a></li>
+<li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="mail">{{ClientRes.email}}</a></li>
+<li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="timiing">{{ClientRes.start_hour}}</a></li>
+<li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="ending">{{ClientRes.end_hour}}</a></li>
 </ul>
 
 
@@ -159,3 +160,4 @@
   </table>
   </div><!--table-responsive close-->
 </div><!--col-md-6 close-->
+<!--</div>-->

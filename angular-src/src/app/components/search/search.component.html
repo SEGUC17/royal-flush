@@ -83,7 +83,7 @@
       <div class="row">
         <div class="col-md-8">
           <div class="search-res well">
-            <h4> {{result.name}} </h4>
+            <h4><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/client', result.username]">{{result.name}} </a></h4>
             <h6>Category: {{result.category}} </h6>
             <h6>Address: {{result.address}} </h6>
             <h6>Working hours: {{result.start_hour}}-{{result.end_hour}} </h6>
