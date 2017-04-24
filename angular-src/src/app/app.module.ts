@@ -39,7 +39,7 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   // { path: 'company/:username', component: CompanyComponent },
   { path: 'search', component: SearchComponent },
-  {path:'client', component:ClientComponent},
+  {path:'client/:username', component:ClientComponent},
   { path: '', component: HomeComponent },
   {path:'clientprofile', component:ClientprofileComponent},
   { path: '**', redirectTo: '' },

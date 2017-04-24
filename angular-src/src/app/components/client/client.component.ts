@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { RetrieveService } from '../../services/retrieve.service';
 
 @Component({
   selector: 'app-client',
@@ -8,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
-  searchKey:String;
+  searchKey: String;
   clientSearch: boolean = true;
   ClientRes: Object[];
 
@@ -16,22 +17,23 @@ export class ClientComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private searchService: SearchService
-
+    private searchService: SearchService,
+    private retrieveService: RetrieveService
   ) { }
 
   selectedValue: string;
 
 
   ngOnInit() {
-     this.searchKey = this.route.snapshot.params['username'];
+    this.searchKey = this.route.snapshot.params['username'];
 
     this.retrieveService.getClientProfile(this.searchKey).subscribe(ClientRes => {
-      if (!searchKey.success) {
+      if (!ClientRes.success) {
         this.router.navigate(['/']);
-      }else{
-        this.ClientRes = searchKey.user;
-     });
+      } else {
+        this.ClientRes = ClientRes.user;
+      }
+    });
 
   }
 
@@ -40,7 +42,7 @@ export class ClientComponent implements OnInit {
   }
   onLinkClick($event: any) {
     console.log($event);
-    this.clientSearch=!this.clientSearch;
+    this.clientSearch = !this.clientSearch;
 
   }
   getClients() {
