@@ -30,6 +30,14 @@ var clientEventController = require('./controllers/clientEventController');
 const User = require('./models/User');
 const config = require('./config/database');
 
+
+
+//////////User Routes
+router.get('/getUser', userController.getUser);
+router.get('/subscriptions', userController.getSubscribedClients);
+router.get('/reservations', userController.getReservations);
+router.post('/test', user_controller.updateInfo);
+//////////
 // Deal Routes
 router.get('/viewDeal/:deal_id', dealController.getDeal);
 router.get('/viewDeals', dealController.getAllDeals);
@@ -146,6 +154,32 @@ router.post('/authenticate', (req, res, next) => {
 // Profile
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
   res.json({user: req.user});
+});
+
+
+router.get('/client',(req,res)=>{
+  //const verified = req.body.verified;
+  //const name = req.body.name;
+
+  Client.getClientByVerificationStatus((err,client)=>{
+    if(err)
+    throw err;
+    //else if(verified == false)
+    res.json(this.name);
+
+
+
+
+  });
+});
+router.delete('/client',(req,res) =>{
+  Client.VerifyClients((err, id)=>{
+    if(err)
+    throw err;
+    res.json(client);
+
+  });
+
 });
 
 module.exports = router;

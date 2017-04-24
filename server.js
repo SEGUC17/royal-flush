@@ -18,8 +18,12 @@ const session      = require('express-session');
 const app = express();
 app.use(cors());
 
-// app.set('view engine', 'ejs');
+// Set our api routes  Abu Greedah
+app.use('/api', api);
 
+// app.set('view engine', 'ejs');
+// app.use(bodyParser.urlencoded({ extended: true }));
+// >>>>>>> de7397d57657435c23218f95463359110ade42c5
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use(cookieParser()); // read cookies (needed for auth)

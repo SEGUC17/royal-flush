@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { Router, ActivatedRoute } from '@angular/router';
+<<<<<<< HEAD
 import { RetrieveService } from '../../services/retrieve.service';
+=======
+>>>>>>> de7397d57657435c23218f95463359110ade42c5
 
 @Component({
   selector: 'app-client',
@@ -9,7 +12,9 @@ import { RetrieveService } from '../../services/retrieve.service';
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
+
   searchKey: String;
+
   clientSearch: boolean = true;
   ClientRes: Object[];
 
@@ -17,8 +22,10 @@ export class ClientComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+
     private searchService: SearchService,
     private retrieveService: RetrieveService
+
   ) { }
 
   selectedValue: string;
@@ -35,6 +42,7 @@ export class ClientComponent implements OnInit {
       }
     });
 
+
   }
 
   ngOnDestroy() {
@@ -43,6 +51,7 @@ export class ClientComponent implements OnInit {
   onLinkClick($event: any) {
     console.log($event);
     this.clientSearch = !this.clientSearch;
+
 
   }
   getClients() {

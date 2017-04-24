@@ -85,4 +85,25 @@ module.exports.findByClientCategory = function (clientCategory, callback) {
   Client.find(query, callback);
 }
 
+// <<<<<<< HEAD
+// =======
+//rawan
+// const client = module.exports = mongoose.model("client", clientSchema);
+//getting unverified clients
+module.exports.getClientsByVerificationStatus = (callback) =>{
+  const query = {verified: "false"}
+  Client.findByVerificationStatus(query, callback);
+}
+//verify Clients by deleting them from unverified clients
+module.exports.VerifyClients = function(req, res) {
+  Client.findByIdAndRemove(req.params.id, function(err, client) {
+    if (err) {
+      throw new Error(err);
+    }
+    res.send(client);
+  });
+};
+
+
+// >>>>>>> de7397d57657435c23218f95463359110ade42c5
 // module.exports = Client;
