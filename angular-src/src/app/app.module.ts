@@ -6,8 +6,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { PostsComponent } from './posts/posts.component';
-import { PostsService } from './posts.service';
+import { PostsComponent } from './components/posts/posts.component';
+import { PostsService } from './services/posts.service';
 
 
 // Define the routes
