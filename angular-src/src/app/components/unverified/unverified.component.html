@@ -1,0 +1,14 @@
+
+
+<div class="unverifedclients-list">
+    <div *ngFor="let client of clients">
+        
+        <div class="col-md-7">
+            {{client.name}}    
+        </div> 
+        <div class="col-md-4">
+            <input type="button" (click)="deleteTask(task._id)" value="Verify" class="btn btn-danger">    
+        </div>
+        <br><br>
+    </div>
+</div>
