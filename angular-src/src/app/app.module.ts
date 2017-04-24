@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+<<<<<<< HEAD
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
@@ -40,6 +41,8 @@ import { PricePipe } from './pipes/price.pipe';
 import { LocationEventPipe } from './pipes/location-event.pipe';
 import { ClientComponent } from './components/client/client.component';
 import { ClientprofileComponent } from './components/clientprofile/clientprofile.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { PostsService } from './services/posts.service';
 
 const appRoutes: Routes = [
 
@@ -54,8 +57,9 @@ const appRoutes: Routes = [
   { path:'clientprofile', component: ClientprofileComponent },
   { path: '**', redirectTo: '' },
   { path:'unverifiedView', component: UnverifiedComponent },
-  { path:'feedback', component: FeedbachFormComponent }
-
+  { path:'feedback', component: FeedbachFormComponent },
+  // { path: '', redirectTo: 'posts', pathMatch: 'full'},
+  { path: 'posts', component: PostsComponent}
 
 ];
 
@@ -67,7 +71,6 @@ const appRoutes: Routes = [
     RegisterComponent,
     HomeComponent,
     DashboardComponent,
-
     FeedbachFormComponent,
     ProfileComponent,
     // CompanyComponent,
@@ -80,10 +83,9 @@ const appRoutes: Routes = [
     ClientprofileComponent,
     UnverifiedComponent,
     UserProfileComponent,
-    EditUserProfileComponent
-
+    EditUserProfileComponent,
+    PostsComponent
   ],
-
   imports: [
     BrowserModule,
     FormsModule,
@@ -100,7 +102,7 @@ const appRoutes: Routes = [
     MdSliderModule
   ],
 
-  providers: [ValidateService, UnverifiedService, AuthService, AuthGuard, RetrieveService, SearchService, UserProfileService, EditUserProfileService],
+  providers: [ValidateService, UnverifiedService, AuthService, AuthGuard, RetrieveService, SearchService, UserProfileService, EditUserProfileService, PostsService],
 
   bootstrap: [AppComponent]
 })

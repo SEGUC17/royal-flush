@@ -3,10 +3,6 @@
 
 // <<<<<<< HEAD
 const { SpecReporter } = require('jasmine-spec-reporter');
-// =======
-// /*global jasmine */
-// var SpecReporter = require('jasmine-spec-reporter');
-// >>>>>>> f1d3e2d180b4d1a2f1311d8ec95e74d4de216215
 
 exports.config = {
   allScriptsTimeout: 11000,
@@ -25,6 +21,8 @@ exports.config = {
     print: function() {}
   },
 // <<<<<<< HEAD
+  useAllAngular2AppRoots: true,
+
   beforeLaunch: function() {
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'
@@ -42,5 +40,6 @@ exports.config = {
 //   onPrepare: function() {
 //     jasmine.getEnv().addReporter(new SpecReporter());
 // >>>>>>> f1d3e2d180b4d1a2f1311d8ec95e74d4de216215
+
   }
 };
