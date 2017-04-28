@@ -19,6 +19,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { UserProfileService } from './services/user-profile.service';
 import { EditUserProfileComponent } from './components/edit-user-profile/edit-user-profile.component';
 import { EditUserProfileService } from './services/edit-user-profile.service';
+import { CreateClientEventComponent } from './components/create-client-event/create-client-event.component';
+import { CreateClientEventService } from './services/create-client-event.service';
+
 ////////
 import { MdButtonModule, MdCheckboxModule, MdSelectModule, MdGridListModule, MdTabsModule, MdSliderModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
@@ -84,7 +87,8 @@ const appRoutes: Routes = [
     UnverifiedComponent,
     UserProfileComponent,
     EditUserProfileComponent,
-    PostsComponent
+    PostsComponent,
+    CreateClientEventComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +106,7 @@ const appRoutes: Routes = [
     MdSliderModule
   ],
 
-  providers: [ValidateService, UnverifiedService, AuthService, AuthGuard, RetrieveService, SearchService, UserProfileService, EditUserProfileService, PostsService],
+  providers: [ValidateService, UnverifiedService, AuthService, AuthGuard, RetrieveService, SearchService, UserProfileService, EditUserProfileService, PostsService, CreateClientEventService],
 
   bootstrap: [AppComponent]
 })

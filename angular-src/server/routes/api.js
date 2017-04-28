@@ -70,4 +70,16 @@ router.post('/editUserProfile', (req, res) => {
     });
 });
 
+//Create Client Event
+
+//  Edit Profile
+router.post('/createClientEvent', (req, res) => {
+
+  axios.post(`${API}/saveClientEvent`, req.body)
+    .catch(error => {
+      res.status(500).send(error)
+    });
+});
+
+
 module.exports = router;
