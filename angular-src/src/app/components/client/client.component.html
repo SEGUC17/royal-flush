@@ -161,3 +161,28 @@
   </div><!--table-responsive close-->
 </div><!--col-md-6 close-->
 <!--</div>-->
+<h3> Enter Your username below to view your bookings</h3>
+
+<div class="form-group">
+  <input class="form-control" type="text" placeholder="username" [(ngModel)]="username" name="username"
+    (keyup)="getReservation(username)">
+</div>
+</form>
+<div *ngIf="reservations">
+<div *ngFor="let result of reservations ">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="search-res well">
+        <h4>Booking time: {{result.booked_date_time}} </h4>
+        <h6>User ID: {{result.user_id}} </h6>
+        <h6>User Username: {{result.username}} </h6>
+        <h6>Client ID: {{result.client_id}} </h6>
+        <h6>Client Name: {{result.client_name}} </h6>
+
+        <div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
