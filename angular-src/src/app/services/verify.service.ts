@@ -9,7 +9,7 @@ export class VerifyService{
     }
     
     getClient(){
-        return this.http.get('/api/viewClientProfile')
+        return this.http.get('localhost:8080/viewClientProfile')
             .map(res => res.json());
     }
     
@@ -27,16 +27,25 @@ export class VerifyService{
     //     return this.http.put('/api/task/'+client.email, JSON.stringify(client), {headers: headers})
     //         .map(res => res.json());
     // }
-    verifyClient(){
-        return this.http.post('/api/verifyClient')
-            .map(res => res.json());
-    }
-    rejectClient(client:any){
+    verifyClient(client){
+        //return this.http.post('localhost:8080/verifyClient')
+            //.map(res => res.json());
         let bodyString = client;
         let headers      = new Headers({ 'Content-Type': 'application/json' });
-        this.http.post('/api/rejectClient', bodyString, { headers: headers }).toPromise();
-        r
+        this.http.post('localhost:8080/verifyClient', client, { headers: headers }).map(res => res.json());//.toPromise();
     }
+    rejectClient(client){
+        let bodyString = client;
+        let headers      = new Headers({ 'Content-Type': 'application/json' });
+        this.http.post('localhost:8080/rejectClient', client, { headers: headers }).map(res => res.json());//.toPromise();
+        
+    }
+  //     createClientProf(clientprof){
+  //   let headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   return this.http.post('localhost:8080/saveClientProfile', clientprof,{headers: headers})
+  //     .map(res => res.json());
+  // }
 
      
 }
