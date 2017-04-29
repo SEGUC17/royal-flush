@@ -78,5 +78,29 @@ export class ClientComponent implements OnInit {
   searchInit() {
 
   }
+  goSubscribe(searchKey) {
+    //  this.searchRes = [];
+    //this.searchService.getInfo(this.searchKey).subscribe(res => { this.ClientRes = res },
+      //err => {
+        //console.log(err);
+        //return false;
+      });
+  }
+  goReserve(searchKey) {
+    //  this.searchRes = [];
+    //this.searchService.getInfo(this.searchKey).subscribe(res => { this.ClientRes = res },
+      //err => {
+        //console.log(err);
+        //return false;
+      });
+  }
+  goFeedback(searchKey) {
+    //  this.searchRes = [];
+  //  this.searchService.getInfo(this.searchKey).subscribe(res => { this.ClientRes = res },
+    //  err => {
+      //  console.log(err);
+        //return false;
+      });
+  }
 
 }
