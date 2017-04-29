@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Create Client Profile</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+
+    <form id="saveClientProfileForm" action="/saveClientProfile" method="post" >
+
+            <label>Description</label>
+            <input type="text" name="description" placeholder="description">
+            <br>
+            <label>Client info</label>
+            <input type="text" name="clientInfo" placeholder="client info">
+            <br>
+            <label>Payment info</label>
+            <input type="text" name="paymentInfo" placeholder="payment info">
+            <br>
+            <input type="submit" name="submit" value="submit">
+
+    </form>
+
+  </body>
+</html>
