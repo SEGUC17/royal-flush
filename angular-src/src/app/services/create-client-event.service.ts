@@ -10,7 +10,7 @@ export class CreateClientEventService {
   createClientEvent(data: any){
     let bodyString = data;
     let headers      = new Headers({ 'Content-Type': 'application/json' });
-    this.http.post('/api/createClientEvent', bodyString, { headers: headers }).toPromise();
+    this.http.post('http://localhost:8080/saveClientEvent', bodyString, { headers: headers }).toPromise();
 
 
   }
