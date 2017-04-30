@@ -1,0 +1,53 @@
+<h1>User Profile</h1>
+<!-- <div> <button (click)="redirect()">Redirect</button></div> -->
+ <nav>
+     <button routerLink="/editUserProfile">Edit my profile</button>
+</nav>
+<div class="container">
+  <h4 class="card-title">{{user.name}}</h4>
+  <h4 class="card-title">{{user.email}}</h4>
+  <h4 class="card-title">{{user.address}}</h4>
+  <div class="row" *ngFor="let subscription of subscriptions">
+    <div class="card card-block">
+      <h4 class="card-title"><b>subscription</b></h4>
+      <p class="card-text"><b>client name</b> {{subscription.name}}</p>
+      <p class="card-text"><b>email</b> {{subscription.email}}</p>
+      <p class="card-text"><b>category</b> {{subscription.category}}</p>
+    </div>
+  </div>
+
+  <div class="row" *ngFor="let reservation of reservations">
+    <div class="card card-block">
+      <h4 class="card-title"><b>reservation</b></h4>
+      <p class="card-text"><b>client name</b> {{reservation.name}}</p>
+      <p class="card-text"><b>email</b> {{reservation.email}}</p>
+      <p class="card-text"><b>category</b> {{reservation.category}}</p>
+      <p class="card-text"><b>booked_date_time</b> {{reservation.booked_date_time}}</p>
+    </div>
+  </div>
+</div>
+<form>
+    <div class="form-group">
+    <h3> Enter Your Client Name below to view Users Bookings </h3>
+      <input class="form-control" type="text" placeholder="Client Name" [(ngModel)]="client_name" name="client_name"
+        (keyup)="getClientReservation(client_name)">
+    </div>
+  </form>
+  <div *ngIf="reservations">
+    <div *ngFor="let result of reservations ">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="search-res well">
+            <h4>Booking time: {{result.booked_date_time}} </h4>
+            <h6>User ID: {{result.user_id}} </h6>
+            <h6>User Username: {{result.username}} </h6>
+            <h6>Client ID: {{result.client_id}} </h6>
+            <h6>Client Name: {{result.client_name}} </h6>
+
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,10 @@
+<form>
+  <div>
+    <label>Feedback message</label>
+    <br>
+    <input (keyup)="updateText($event)" type="text" placeholder="feedback" style="width:400px; height:300px">
+  </div>
+  <hr>
+  <button (click)="onClicked()">Send Feedback </button>
+
+</form>
