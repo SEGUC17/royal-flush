@@ -1,0 +1,67 @@
+<style>
+.form-control:focus {
+border-color: rgba(224, 97, 40, 0.8);
+/*box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);*/
+}
+
+.form-control{
+  background-color: rgba(224, 97, 40, 0.2);
+  border-color: black;
+}
+
+.dis{
+  background-color: rgba(224, 97, 40, 0.4);
+  border-color: rgba(224, 97, 40, 0.8);
+}
+
+.clbtn{
+  background-color: #E06329;
+  border: 0px;
+}
+</style>
+<h2 class="page-header">Create Client Profile</h2>
+<div class="row">
+  <form (submit)="saveClientProfile()" class="col-md-6" >
+     <div class="form-group col-md-12">
+      <label>Business Name</label>
+      <input type="text" [(ngModel)]="clientName" name="clientName" class="form-control dis"/>
+    </div> 
+    <div class="form-group col-md-12">
+      <label>Business Email</label>
+      <input type="text" [(ngModel)]="email" name="email" class="form-control" />
+    </div>
+    <div class="form-group col-md-12">
+      <label class="col-md-12">Business Category</label>
+      <select class="col-md-12" id="#" [(ngModel)]="category" name="category">
+        <option value="Food">Food</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Fun">Fun</option>
+        <option value="Parks">Parks</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-group col-md-12">
+      <label>Owner Full Name</label>
+      <input type="text" [(ngModel)]="fullname" name="fullname" class="form-control" />
+    </div>
+    <div class="form-group col-md-12">
+      <label>Contact Number</label>
+      <input type="text" [(ngModel)]="contactNo" name="contactNo" class="form-control">
+    </div>
+    <div class="form-group col-md-12">
+      <label>Business Description</label>
+      <textarea [(ngModel)]="clientDescription" name="clientDescription" class="form-control"></textarea>
+    </div>
+    <div class="form-group col-md-12">
+      <label>Business Information</label>
+      <textarea [(ngModel)]="clientInfo" name="clientInfo" class="form-control"></textarea>
+    </div>
+    <div class="form-group col-md-12">
+      <label>Payment Information</label>
+      <textarea [(ngModel)]="paymentInfo" name="paymentInfo" class="form-control"></textarea>
+    </div>
+    <div class="form-group col-md-12">
+      <input type="submit" class="btn btn-primary clbtn" value="Submit for Verification">
+    </div>
+  </form>
+</div>
