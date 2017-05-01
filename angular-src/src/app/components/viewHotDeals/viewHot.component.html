@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row" *ngFor="let post of posts">
+    <div class="card card-block">
+      <h4 class="card-title">{{ deal.title }} by {{ deal.providerName }}</h4>
+      <p class="card-text">{{deal.description}}</p>
+      <p class="card-text"> starting from {{deal.start_date}} till {{deal.end_date}}</p>
+      <p class="card-text">{{deal.price}}</p>
+      <!--<a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>-->
+    </div>
+  </div>
+</div>

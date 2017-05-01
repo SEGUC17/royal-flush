@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>Create Client Event</h1>
+    <form (ngSubmit)="createClientEvent(createEventForm)" #createEventForm="ngForm">
+      <div class="form-group">
+        <label for="eventName">Event Name</label>
+        <input type="text" placeholder="Event Name" class="form-control" name="eventName" ngModel>
+        <label for="startingDate">Starting Date</label>
+        <input type="date" placeholder="Starting Date" class="form-control" name="startingDate" ngModel>
+        <label for="endingDate">Ending Date</label>
+        <input type="date" placeholder="Ending Date" class="form-control" name="endingDate" ngModel>
+        <label for="price">Price</label>
+        <input type="text" placeholder="Price" class="form-control" name="price" ngModel>
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
